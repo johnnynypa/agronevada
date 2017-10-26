@@ -1,7 +1,7 @@
 {
     "clientDomain":"",
     "connectionDb":{
-        "databaseName": "c9",
+        "databaseName": "agronevada",
         "user": "menesdos",
         "password": "palma",
         "host": "localhost"

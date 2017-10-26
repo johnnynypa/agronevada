@@ -7,7 +7,7 @@ import config from 'dos-config';
 // import graphql from './routes/graphql';
 
 var app = express();
-const endPoint = '/graphql';
+// const endPoint = '/graphql';
 
 
 app.use(cors());
