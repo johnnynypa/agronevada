@@ -1,0 +1,37 @@
+{
+  "name": "agronevada-back",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "npm run server",
+    "server": "nodemon --watch server --exec babel-node ./server/index.js ",
+    "dev": "echo \"This command has been deprecated. Use 'npm start'\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johnnynypa/agronevada-back.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/johnnynypa/agronevada-back/issues"
+  },
+  "homepage": "https://github.com/johnnynypa/agronevada-back#readme",
+  "dependencies": {
+    "bcrypt": "^1.0.3",
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "dos-config": "^3.0.2",
+    "express": "^4.16.2",
+    "graphql": "^0.11.7",
+    "graphql-server-express": "^1.1.7",
+    "graphql-tools": "^2.6.1",
+    "jsonwebtoken": "^8.1.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
+    "nodemon": "^1.11.0"
+  }
+}
