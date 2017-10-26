@@ -4,6 +4,7 @@
         "databaseName": "agronevada",
         "user": "menesdos",
         "password": "palma",
-        "host": "localhost"
+        "host": "localhost",
+        "poolLimit": 10
     }
 }
