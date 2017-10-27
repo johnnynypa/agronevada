@@ -4,7 +4,7 @@ import bodyParser from 'body-parser';
 import config from 'dos-config';
 
 
-import graphql from './routes/graphql';
+// import graphql from './routes/graphql';
 
 var app = express();
 const endPoint = '/graphql';
@@ -15,17 +15,18 @@ app.use(bodyParser.json());
 
 // app.use('/login', login);
 
-app.post(endPoint, (req, res, next) => {
-    //Validacion
+// app.post(endPoint, (req, res, next) => {
+//     //Validacion
 
-    next();
-});
+//     next();
+// });
 
-app.use(endPoint, graphql);
+// app.use(endPoint, graphql);
 
-app.use('/graphiql', graphql);
+// app.use('/graphiql', graphql);
 
-app.set('port', (process.env.PORT || 8081));
+// app.set('port', (process.env.PORT || 8081));
+app.set('port', (8081));
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('client/build'));
