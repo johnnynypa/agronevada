@@ -1,11 +1,11 @@
 {
-  "name": "agronevada-back",
+  "name": "agronevada",
   "version": "1.0.0",
   "description": "",
   "main": "server/index.js",
   "scripts": {
-    "start": "concurrently  \"npm run server\" \"npm run client\"  ",
-    "server": "nodemon --watch server --exec babel-node ./server/index.js ",
+    "start": "concurrently  \"npm run server\" \"npm run client\"",
+    "server": "nodemon --watch server --exec babel-node ./server/index.js",
     "client": "babel-node start-client.js",
     "dev": "echo \"This command has been deprecated. Use 'npm start'\" && exit 1"
   },

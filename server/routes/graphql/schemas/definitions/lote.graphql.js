@@ -15,6 +15,8 @@ export default `
         descuento : Float!
         retefuente : Float
         bonificacion : Float
+        salidas : [Salida]
+        ajustes : [Ajuste]
     }
     
     input newLote{
