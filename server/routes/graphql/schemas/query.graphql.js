@@ -30,7 +30,6 @@ export default `
         cliente                         (id : Int)                                      : Cliente
         clientes                                                                        : [Cliente]
         clienteByCedula                 (cc : String)                                   : Cliente
-        configuracion                                                                   : Configuracion
         usuario                         (id : Int)                                      : Usuario
         usuarios                                                                        : [Usuario]
         usuariosByRole                  (idRole : Int)                                  : [Usuario]
