@@ -37,6 +37,31 @@ class Usuario{
             })
         });
     }
+    
+    static getBynameUser(nameUser){
+        return new Promise( (resolve, reject) => {
+            conex( (err, con) =>{
+                if(err){
+                    reject("Ha ocurrido un error en el servidor, intentelo mas tarde");
+                }else{
+                    con.query(
+                        'SELECT * FROM usuarios WHERE usuario = ? LIMIT 1',
+                        [nameUser],
+                        (error, results, fields) => {
+                            con.release();
+                            if(error){
+                                console.error(error);
+                                reject(error);
+                            }else{
+                                // console.log(results[0]);
+                                resolve(results[0]);
+                            }
+                        }
+                    )
+                }
+            })
+        })
+    }
 }
 
 export default Usuario;

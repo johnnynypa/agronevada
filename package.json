@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/johnnynypa/agronevada-back.git"
+    "url": "git+https://github.com/johnnynypa/agronevada.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/johnnynypa/agronevada-back/issues"
+    "url": "https://github.com/johnnynypa/agronevada/issues"
   },
-  "homepage": "https://github.com/johnnynypa/agronevada-back#readme",
+  "homepage": "https://github.com/johnnynypa/agronevada#readme",
   "dependencies": {
     "bcrypt": "^1.0.3",
     "body-parser": "^1.18.2",
