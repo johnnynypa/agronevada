@@ -39,7 +39,7 @@ app.listen(app.get('port'), () => {
 });
 
 import User from './model/definitions/usuario';
-User.getBynameUser('angel');
+// User.getBynameUser('angel');
 // User.newUser('Angel Laguna', 'angel', '1234', 1);
 
 

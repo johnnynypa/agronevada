@@ -54,7 +54,10 @@ class Usuario{
                                 reject(error);
                             }else{
                                 // console.log(results[0]);
-                                resolve(results[0]);
+                                if(results)
+                                    resolve(results[0]);
+                                else
+                                    resolve(null);
                             }
                         }
                     )
