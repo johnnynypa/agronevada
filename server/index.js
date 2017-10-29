@@ -5,9 +5,10 @@ import config from 'dos-config';
 
 
 // import graphql from './routes/graphql';
+import login from './routes/login';
 
 var app = express();
-const endPoint = '/graphql';
+// const endPoint = '/graphql';
 
 
 app.use(cors());
@@ -37,4 +38,9 @@ app.listen(app.get('port'), () => {
     console.log(`GraphiQL listen in http://localhost:${app.get('port')}/graphiql`);
 });
 
-import './model';
+// import User from './model/definitions/usuario';
+// User.newUser('Angel Laguna', 'angel', '1234', 1);
+
+
+
+
