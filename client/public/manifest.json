@@ -1,9 +1,9 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Agronevada App",
+  "name": "Agronevada App",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "logo_peque.png",
       "sizes": "192x192",
       "type": "image/png"
     }

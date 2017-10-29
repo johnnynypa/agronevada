@@ -14,7 +14,7 @@ var app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-// app.use('/login', login);
+app.use('/login', login);
 
 // app.post(endPoint, (req, res, next) => {
 //     //Validacion
@@ -24,12 +24,11 @@ app.use(bodyParser.json());
 
 // app.use(endPoint, graphql);
 
-// app.use('/graphiql', graphql);
-
 // app.set('port', (process.env.PORT || 8081));
 app.set('port', (8081));
 
 if (process.env.NODE_ENV === 'production') {
+    // app.use('/graphiql', graphql);
     app.use(express.static('client/build'));
 }
 
@@ -38,7 +37,7 @@ app.listen(app.get('port'), () => {
     console.log(`GraphiQL listen in http://localhost:${app.get('port')}/graphiql`);
 });
 
-import User from './model/definitions/usuario';
+// import User from './model/definitions/usuario';
 // User.getBynameUser('angel');
 // User.newUser('Angel Laguna', 'angel', '1234', 1);
 
