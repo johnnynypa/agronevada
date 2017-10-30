@@ -1,18 +1,30 @@
 import React from 'react';
-import PropTypes from 'proptypes';
+import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 
 class WebApp extends React.Component{
     render(){
-        return(
-            <div>
-                <h1>WebApp</h1>
-            </div>
-        )
+        if(!this.props.isLogin){
+            this.context.router.history.push('/login');
+            return (<div></div>);
+        }else{
+            return(
+                <div>
+                    <h1>WebApp</h1>
+                </div>
+            )
+        }
     }
 }
 
 WebApp.contextTypes = {
-    router : PropTypes.func.isRequired
+    router : PropTypes.object.isRequired
 }
 
-export default WebApp;
+function mapStateToProps(state){
+    return{
+        isLogin : state.login.isLogin
+    }
+}
+
+export default connect(mapStateToProps)(WebApp);

@@ -8,3 +8,6 @@ export default `
         createTipoReturned (tipo : newTipo) : Tipo
     }
 `
+
+// createUsuario (usuario : newUsuario) : Boolean
+//         createUsuarioReturned (usuario : newUsuario) : Usuario

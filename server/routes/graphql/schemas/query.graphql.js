@@ -30,10 +30,11 @@ export default `
         cliente                         (id : Int)                                      : Cliente
         clientes                                                                        : [Cliente]
         clienteByCedula                 (cc : String)                                   : Cliente
-        usuario                         (id : Int)                                      : Usuario
-        usuarios                                                                        : [Usuario]
-        usuariosByRole                  (idRole : Int)                                  : [Usuario]
-        role                            (id : Int)                                      : Role
-        roles                                                                           : [Role]
     }
 `;
+
+// usuario                         (id : Int)                                      : Usuario}
+//         usuarios                                                                        : [Usuario]
+//         usuariosByRole                  (idRole : Int)                                  : [Usuario]
+// role                            (id : Int)                                      : Role
+//         roles                                                                           : [Role]

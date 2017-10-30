@@ -7,17 +7,23 @@ import User from '../model/definitions/usuario';
 let router = express.Router();
 
 //Login Middleware
-router.post('/', (req, res) => {
+router.post('/', (req, res, next) => {
     const { username, password } = req.body;
     verificarCredenciales(username, password)
     .then(data =>{
-        res.json({
-            id : data.idUsuario,
-            nombre : data.nombre,
-            idRole : data.roles_idroles
-        }, config.jwtSecret);
+        console.log("Hola mudno");
+        const token = jwt.sign({
+                    id : data.idUsuario,
+                    nombre : data.nombre,
+                    idRole : data.roles_idroles
+                },
+                config.jwtSecret
+            )
+        res.status(200).json(token);
+            
+        next()
     })
-    .catch(err => {res.json(err)}); //Error
+    .catch(err => {res.status(200).json(err)}); //Error
 })
 
 /**
@@ -38,10 +44,11 @@ function verificarCredenciales(us, psw){
                 reject({error: "Credenciales incorrectas"});
             }
         })
-        .catch( err =>{
+        .catch( (err) =>{
             reject({error: "Ha ocurrido un error, intentelo mas tarde"});
         });
     });
 }
 
 
+export default router;

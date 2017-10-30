@@ -26,7 +26,7 @@ export function loginRequest(userData){
         return axios.post(config.api+'/login', userData)
         .then(res =>{
             return new Promise((resolve, eject) => {
-                const token = res.data.token;
+                const token = res.data;
                 localStorage.setItem(config.localStorageLogin, token);
                 setLoginToken(token);
                 dispatch(setCurrentUser(jwt.decode(token)));
