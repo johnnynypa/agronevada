@@ -1,7 +1,7 @@
 import axios from 'axios';
 import setLoginToken from '../../utils/setLoginToken';
 import {SET_CURRENT_USER} from './types';
-import config from 'dos-config';
+import config from '../../config/defaults.json';
 import jwt from 'jsonwebtoken';
 
 export function logout(){

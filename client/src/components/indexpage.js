@@ -1,9 +1,13 @@
 import React from 'react';
 import PropTypes from 'proptypes';
+import { connect } from 'react-redux';
 
 class IndexPage extends React.Component{
     componentWillMount(){
-        this.context.router.history.push('/app');
+        if(this.props.isLogin)
+            this.context.router.history.push('/app');
+        else
+            this.context.router.history.push('/login');
     }
     render(){
         return(
@@ -13,7 +17,12 @@ class IndexPage extends React.Component{
 }
 
 IndexPage.contextTypes = {
-    router : PropTypes.func.isRequired
+    router : PropTypes.object.isRequired
 }
-  
-export default IndexPage;
+ 
+function mapStateToProps(state){
+    return{
+        isLogin : state.login.isLogin
+    }
+}
+export default connect(mapStateToProps)(IndexPage);

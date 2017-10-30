@@ -1,18 +1,32 @@
 import React from 'react';
 import PropTypes from 'proptypes';
+import { connect } from 'react-redux';
+import '../styles/login.css';
 
 class Login extends React.Component{
+    componentWillMount(){
+        if(this.props.isLogin)
+            this.context.router.history.push('/');
+    }
     render(){
         return(
-            <div>
-                <h1>Login</h1>
+            <div className="login" >
+                <div className="login-form" >
+                    <h1>Iniciar Sesión</h1>
+                </div>
             </div>
         )
     }
 }
 
 Login.contextTypes = {
-    router : PropTypes.func.isRequired
+    router : PropTypes.object.isRequired
 }
 
-export default Login;
+function mapStateToProps(state){
+    return{
+        isLogin : state.login.isLogin
+    }
+}
+
+export default connect(mapStateToProps)(Login);
