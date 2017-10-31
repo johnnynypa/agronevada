@@ -10,7 +10,7 @@ export default {
         
         /**
          * @param id : Int
-        */
+        **/
         productor(root, {id}){
             return (id) ? Productor.getById(id)
                 .then( dat => dat)

@@ -10,7 +10,7 @@ import Mutation from './mutation.graphql';
 import Productor from './definitions/productor.graphql';
 // import Salida from './definitions/salida.graphql';
 // import Secado from './definitions/secado.graphql';
-// import Tipo from './definitions/tipo.graphql';
+import Tipo from './definitions/tipo.graphql';
 
 const typeDefs = [
     Schema,
@@ -24,7 +24,7 @@ const typeDefs = [
     Productor,
     // Salida,
     // Secado,
-    // Tipo
+    Tipo
 ];
 
 export default typeDefs;

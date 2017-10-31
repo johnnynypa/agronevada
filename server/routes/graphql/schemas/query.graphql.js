@@ -2,6 +2,8 @@ export default `
     type Query {
         productor                       (id : Int)                                      : Productor
         productores                                                                     : [Productor]
+        tipo                            (id : Int)                                      : Tipo
+        tipos                                                                           : [Tipo]
     }
 `;
 
@@ -20,8 +22,6 @@ export default `
 //         lotesOrderOldByTipoAndSecado    (idTipo : Int, idSecado : Int)                  : [Lote]
 //         secado                          (id : Int)                                      : Secado
 //         secados                                                                         : [Secado]
-//         tipo                            (id : Int)                                      : Tipo
-//         tipos                                                                           : [Tipo]
 //         conductor                       (id : Int)                                      : Conductor
 //         conductores                                                                     : [Conductor]
 // ajuste                          (id : Int)                                      : Ajuste
