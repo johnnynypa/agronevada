@@ -1,6 +1,6 @@
 import { merge } from 'lodash';
 
-import productorResolver from './definitios/productor.resolver';
+import productorResolver from './definitions/productor.resolver';
 
 const resolvers = merge(
     productorResolver

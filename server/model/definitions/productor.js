@@ -1,18 +1,51 @@
 import conex from '../';
 
 const atributos = [
-    'idProductor as id',
-    'nombreFinca',
-    'nombreGerente',
-    'direccion',
-    'telefono',
-    'email'
+        'idProductor as id',
+        'nombreFinca',
+        'nombreGerente',
+        'direccion',
+        'telefono',
+        'email'
+    ];
+    
+const FIELDS = [
+        'nombreFinca',
+        'nombreGerente',
+        'direccion',
+        'telefono',
+        'email'
     ]
-
 class Productor {
+    
+    static newProductor(data){
+        return new Promise( (resolve, reject) => {
+            conex( (err, con) =>{
+                if(err){
+                    console.log(err);
+                    reject("Ha ocurrido un error, intentelo mas tarde.");
+                }else{
+                    con.query(
+                        'INSERT INTO productores ('+FIELDS.join(', ')+') VALUES (?, ?, ?, ?, ?)',
+                        [data.nombreFinca , data.nombreGerente, data.direccion, data.telefono, data.email],
+                        (error, results, fields) =>{
+                            con.release();
+                            if(error){
+                                console.log(error);
+                                reject("Ha ocurrido un error, intentelo mas tarde.");
+                            }else{
+                                resolve(results.insertId);
+                            }
+                        }
+                    )
+                }
+            })
+        })
+    }
+    
     /**
      * @param id : Int
-     * */
+     **/
     static getById(id){
         return new Promise( (resolve , reject) => {
             conex( (err, con) => {

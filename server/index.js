@@ -4,11 +4,11 @@ import bodyParser from 'body-parser';
 import config from 'dos-config';
 
 
-// import graphql from './routes/graphql';
+import graphql from './routes/graphql';
 import login from './routes/login';
 
 var app = express();
-// const endPoint = '/graphql';
+const endPoint = '/graphql';
 
 
 app.use(cors());
@@ -16,20 +16,21 @@ app.use(bodyParser.json());
 
 app.use('/login', login);
 
-// app.post(endPoint, (req, res, next) => {
-//     //Validacion
+app.post(endPoint, (req, res, next) => {
+    //Validacion
 
-//     next();
-// });
+    next();
+});
 
-// app.use(endPoint, graphql);
+app.use(endPoint, graphql);
 
 // app.set('port', (process.env.PORT || 8081));
 app.set('port', (8081));
 
 if (process.env.NODE_ENV === 'production') {
-    // app.use('/graphiql', graphql);
     app.use(express.static('client/build'));
+}else{
+    app.use('/graphiql', graphql);
 }
 
 app.listen(app.get('port'), () => {

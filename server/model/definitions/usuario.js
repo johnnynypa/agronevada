@@ -7,6 +7,14 @@ const usuarioAtt = 'usuario';
 const contraseñaAtt = 'contrasena';
 const idRoleAtt = 'roles_idroles';
 
+const atributos = [
+    'idUsuario as id',
+    'nombre',
+    'usuario',
+    'contrasena',
+    'roles_idroles as idRole'
+]
+
 class Usuario{
     constructor(){
         
@@ -45,7 +53,7 @@ class Usuario{
                     reject("Ha ocurrido un error en el servidor, intentelo mas tarde");
                 }else{
                     con.query(
-                        'SELECT * FROM usuarios WHERE usuario = ? LIMIT 1',
+                        'SELECT '+atributos.join(', ')+' FROM usuarios WHERE usuario = ? LIMIT 1',
                         [nameUser],
                         (error, results, fields) => {
                             con.release();

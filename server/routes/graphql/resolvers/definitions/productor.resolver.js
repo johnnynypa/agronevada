@@ -7,10 +7,11 @@ export default {
             .then( dat => dat)
             .catch( err => {throw new Error(err)});
         },
+        
         /**
          * @param id : Int
         */
-        productor(id){
+        productor(root, {id}){
             return (id) ? Productor.getById(id)
                 .then( dat => dat)
                 .catch( err => {throw new Error(err)})
@@ -21,16 +22,26 @@ export default {
         /**
          * @param productor : newProductor
          * @return {Boolean}
-         * */
-        createProductor(productor){
-            
+         **/
+        createProductor(root,{productor}){
+            return (productor) ? Productor.newProductor(productor)
+                .then( dat => true)
+                .catch( err => {throw new Error(err)})
+            : null;
         },
+        
         /**
          * @param productor : newProductor
          * @return {Productor}
-         * */
-        createProductorReturned(productor){
-            
+         **/
+        createProductorReturned(root, {productor}){
+            return (productor) ? Productor.newProductor(productor)
+                .then( dat => {
+                    productor.id = dat;
+                    return productor;
+                })
+                .catch( err => {throw new Error(err)})
+            : null;
         }
     }
 }
