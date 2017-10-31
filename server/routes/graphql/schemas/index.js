@@ -1,3 +1,4 @@
+'use strict';
 import Schema from './schema.graphql';
 import Query from './query.graphql';
 import Mutation from './mutation.graphql';
@@ -9,7 +10,7 @@ import Mutation from './mutation.graphql';
 // import Lote from './definitions/lote.graphql';
 import Productor from './definitions/productor.graphql';
 // import Salida from './definitions/salida.graphql';
-// import Secado from './definitions/secado.graphql';
+import Secado from './definitions/secado.graphql';
 import Tipo from './definitions/tipo.graphql';
 
 const typeDefs = [
@@ -23,7 +24,7 @@ const typeDefs = [
     // Lote,
     Productor,
     // Salida,
-    // Secado,
+    Secado,
     Tipo
 ];
 

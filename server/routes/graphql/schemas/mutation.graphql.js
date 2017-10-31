@@ -4,6 +4,8 @@ export default `
         createProductorReturned (productor : newProductor) : Productor
         createTipo (tipo : newTipo) : Boolean
         createTipoReturned (tipo : newTipo) : Tipo
+        createSecado (secado : newSecado) : Boolean
+        createSecadoReturned (secado : newSecado) : Secado
     }
 `
 
