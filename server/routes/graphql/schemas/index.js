@@ -5,7 +5,7 @@ import Mutation from './mutation.graphql';
 
 // import Ajuste from './definitions/ajuste.graphql';
 // import Cliente from './definitions/cliente.graphql';
-// import Conductor from './definitions/conductor.graphql';
+import Conductor from './definitions/conductor.graphql';
 // import DetalleSalida from './definitions/detalleSalida.graphql';
 // import Lote from './definitions/lote.graphql';
 import Productor from './definitions/productor.graphql';
@@ -19,7 +19,7 @@ const typeDefs = [
     Mutation,
     // Ajuste,
     // Cliente,
-    // Conductor,
+    Conductor,
     // DetalleSalida,
     // Lote,
     Productor,

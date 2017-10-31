@@ -8,6 +8,8 @@ export default `
         tipos                                                                           : [Tipo]
         secado                          (id : Int)                                      : Secado
         secados                                                                         : [Secado]
+        conductor                       (id : Int)                                      : Conductor
+        conductores                                                                     : [Conductor]
     }
 `;
 
@@ -24,8 +26,6 @@ export default `
 //         lotesOrderOldBySecado           (idSecado : Int)                                : [Lote]
 //         lotesOrderOldByTipo             (idTipo : Int)                                  : [Lote]
 //         lotesOrderOldByTipoAndSecado    (idTipo : Int, idSecado : Int)                  : [Lote]
-//         conductor                       (id : Int)                                      : Conductor
-//         conductores                                                                     : [Conductor]
 // ajuste                          (id : Int)                                      : Ajuste
 //         ajustes                                                                         : [Ajuste]
 //         ajustesByLote                   (idLote : Int)                                  : [Ajuste]

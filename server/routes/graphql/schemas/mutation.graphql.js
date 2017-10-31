@@ -6,6 +6,8 @@ export default `
         createTipoReturned (tipo : newTipo) : Tipo
         createSecado (secado : newSecado) : Boolean
         createSecadoReturned (secado : newSecado) : Secado
+        createConductor (conductor : newConductor) : Boolean
+        createConductorReturned (conductor : newConductor) : Conductor
     }
 `
 
