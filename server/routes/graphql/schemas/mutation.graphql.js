@@ -8,6 +8,8 @@ export default `
         createSecadoReturned (secado : newSecado) : Secado
         createConductor (conductor : newConductor) : Boolean
         createConductorReturned (conductor : newConductor) : Conductor
+        createLote ( lote : newLote ) : Boolean
+        createLoteReturned (lote : newLote) : Lote
     }
 `
 

@@ -10,6 +10,15 @@ export default `
         secados                                                                         : [Secado]
         conductor                       (id : Int)                                      : Conductor
         conductores                                                                     : [Conductor]
+        lote                            (id : Int)                                      : Lote
+        lotes                                                                           : [Lote]
+        lotesBySecado                   (idSecado : Int)                                : [Lote]
+        lotesByTipo                     (idTipo : Int)                                  : [Lote]
+        lotesByTipoAndSecado            (idTipo : Int, idSecado: Int)                   : [Lote]
+        lotesOrderOld                                                                   : [Lote]
+        lotesOrderOldBySecado           (idSecado : Int)                                : [Lote]
+        lotesOrderOldByTipo             (idTipo : Int)                                  : [Lote]
+        lotesOrderOldByTipoAndSecado    (idTipo : Int, idSecado : Int)                  : [Lote]
     }
 `;
 
@@ -18,14 +27,6 @@ export default `
 //         usuariosByRole                  (idRole : Int)                                  : [Usuario]
 // role                            (id : Int)                                      : Role
 //         roles                                                                           : [Role]
-// lote                            (id : Int)                                      : Lote
-//         lotesBySecado                   (idSecado : Int)                                : [Lote]
-//         lotesByTipo                     (idTipo : Int)                                  : [Lote]
-//         lotesByTipoAndSecado            (idTipo : Int, idSecado: Int)                   : [Lote]
-//         lotesOrderOld                                                                   : [Lote]
-//         lotesOrderOldBySecado           (idSecado : Int)                                : [Lote]
-//         lotesOrderOldByTipo             (idTipo : Int)                                  : [Lote]
-//         lotesOrderOldByTipoAndSecado    (idTipo : Int, idSecado : Int)                  : [Lote]
 // ajuste                          (id : Int)                                      : Ajuste
 //         ajustes                                                                         : [Ajuste]
 //         ajustesByLote                   (idLote : Int)                                  : [Ajuste]
