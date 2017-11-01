@@ -7,13 +7,15 @@ import tiposResolver from './definitions/tipo.resolver';
 import secadoResolver from './definitions/secado.resolver';
 import conductorResolver from './definitions/conductor.resolver';
 import loteResolver from './definitions/lote.resolver';
+import clienteResolver from './definitions/cliente.resolver';
 
 const resolvers = merge(
     productorResolver,
     tiposResolver,
     secadoResolver,
     conductorResolver,
-    loteResolver
+    loteResolver,
+    clienteResolver
 );
 
 export default resolvers;

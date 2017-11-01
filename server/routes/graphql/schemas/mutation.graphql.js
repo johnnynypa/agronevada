@@ -10,6 +10,8 @@ export default `
         createConductorReturned (conductor : newConductor) : Conductor
         createLote ( lote : newLote ) : Boolean
         createLoteReturned (lote : newLote) : Lote
+        createCliente ( cliente : newCliente ) : Boolean
+        createClienteReturned (cliente : newCliente) : Cliente
     }
 `
 

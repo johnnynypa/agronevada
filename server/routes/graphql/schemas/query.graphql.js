@@ -19,6 +19,9 @@ export default `
         lotesOrderOldBySecado           (idSecado : Int)                                : [Lote]
         lotesOrderOldByTipo             (idTipo : Int)                                  : [Lote]
         lotesOrderOldByTipoAndSecado    (idTipo : Int, idSecado : Int)                  : [Lote]
+        cliente                         (id : Int)                                      : Cliente
+        clientes                                                                        : [Cliente]
+        clienteByCedula                 (cc : String)                                   : Cliente
     }
 `;
 
@@ -38,6 +41,3 @@ export default `
 //         salidasByCliente                (idCliente : Int)                               : [Salida]
 //         salidasByClienteAndFechaAndLote (idCliente : Int, fecha : String, idLote: Int)  : [Salida]
 //         salidasByClienteAndLote         (idCliente : Int, idLote : Int)                 : [Salidas]
-//         cliente                         (id : Int)                                      : Cliente
-//         clientes                                                                        : [Cliente]
-//         clienteByCedula                 (cc : String)                                   : Cliente
