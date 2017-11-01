@@ -12,7 +12,7 @@ class Login extends React.Component{
             username : "",
             password: "",
             isLoading: false,
-            errors: null
+            errors: ""
         }
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -76,8 +76,8 @@ class Login extends React.Component{
 								disabled={this.state.isLoading} 
 							>Iniciar sesión</button>
 						</div>
-						<div class="container-sErrors">
-							<span className="sesion-errors">{(!this.state.errors) ? "": String(this.state.errors) }</span>
+						<div className="container-sErrors">
+							<span className="sesion-errors">{( this.state.errors === "" ) ? "": this.state.errors.toString() }</span>
 						</div>
 					</form>
                 </div>
