@@ -64,3 +64,18 @@ body {
 .container-input:nth-child(4) {
 	border-bottom: 1px solid #bfbfbf;
 }
+
+.container-input-faild {
+	border-bottom: 1px dotted red !important;
+}
+
+.sesion-errors {
+	margin-top: 10px;
+	text-align: center;
+	color: red;
+}
+
+.container-sErrors {
+	display: flex;
+	justify-content: center;
+}

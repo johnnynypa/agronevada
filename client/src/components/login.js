@@ -71,10 +71,13 @@ class Login extends React.Component{
 								value={this.state.password} 
 								onChange={this.onChange}/>
 						</div>
-						<div className="container-input">
+						<div className={(this.state.errors) ? "container-input container-input-faild": "container-input"}  >
 							<button className="button-sesion" 
 								disabled={this.state.isLoading} 
 							>Iniciar sesión</button>
+						</div>
+						<div class="container-sErrors">
+							<span className="sesion-errors">{(!this.state.errors) ? "": String(this.state.errors) }</span>
 						</div>
 					</form>
                 </div>
