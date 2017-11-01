@@ -38,8 +38,8 @@ app.listen(app.get('port'), () => {
     console.log(`GraphiQL listen in http://localhost:${app.get('port')}/graphiql`);
 });
 
-// import User from './model/definitions/usuario';
-// User.getBynameUser('angel');
+//import User from './model/definitions/usuario';
+//User.getBynameUser('angel');
 // User.newUser('Angel Laguna', 'angel', '1234', 1);
 
 

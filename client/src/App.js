@@ -36,7 +36,6 @@ setInterval( ()=>{
     const tokenHashed = localStorage.getItem(config.localStorageLogin);
     if(!tokenHashed){
         store.dispatch(logout());
-        Router.history.push('/login');
     }
 }, 10000);
 

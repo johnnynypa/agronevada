@@ -3,7 +3,7 @@
     "connectionDb":{
         "databaseName": "agronevada",
         "user": "menesdos",
-        "password": "palma",
+        "password": "Palma12345",
         "host": "localhost",
         "poolLimit": 10
     },

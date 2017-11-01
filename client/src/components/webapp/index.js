@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import Navbar from './Navbar';
 
 class WebApp extends React.Component{
     render(){
@@ -10,7 +11,7 @@ class WebApp extends React.Component{
         }else{
             return(
                 <div>
-                    <h1>WebApp</h1>
+					<Navbar/>
                 </div>
             )
         }

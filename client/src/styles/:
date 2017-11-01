@@ -1,0 +1,25 @@
+body {
+	font-family: sans-serif;
+	margin : 0;
+	padding: 0;
+}
+
+.login {
+	background: purple;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.login-form {
+	padding : 54px;
+	background: red;
+	height: 366px;
+	width: 326px;
+	background-color: #f3f3f3;
+}
+
+.login-title {
+	color: 2C2929;
+}

@@ -28,9 +28,7 @@ class Login extends React.Component{
     }
     
     onSubmit(e){
-        alert(JSON.stringify(this.state));
         e.preventDefault();
-        
         const {username, password } = this.state;
         if(username && password){
             this.setState({isLoading:true, errors: {} });
@@ -40,8 +38,10 @@ class Login extends React.Component{
 					this.setState({isLoading: false});
 					if(res.data.error){
 						this.setState({errors: res.data.error});
-					}
-					this.context.router.history.push('/');
+						
+					}else{
+						this.context.router.history.push('/');
+					}	
 				}
 			);
         }
@@ -51,28 +51,32 @@ class Login extends React.Component{
         return(
             <div className="login" >
                 <div className="login-form" >
-                    <form onSubmit={this.onSubmit}>
-                        <h1>Iniciar Sesión</h1>
-                        
-                        <label htmlFor="username" > Usuario </label>
-                        <input
-                            type="text"
-                            name="username"
-                            id="username"
-                            value={this.state.username}
-                            onChange={this.onChange}
-                        />
-                        
-                        <label htmlFor="password" > Contraseña </label>
-                        <input
-                            type="password"
-                            name="password"
-                            id="password"
-                            value={this.state.password}
-                            onChange={this.onChange}
-                        />
-                        <button disabled={this.state.isLoading} >Iniciar</button>
-                    </form>
+					<form onSubmit={this.onSubmit}>
+						<div className="container-title">
+							<p className="login-title">Iniciar Sesión</p>
+						</div>	
+						<div className="container-input">
+                        	<label htmlFor="username" > Usuario </label>
+							<input type="text" 
+								name="username" 
+								id="username" 
+								value={this.state.username} 
+								onChange={this.onChange}/>
+						</div>	
+						<div className="container-input">	
+							<label htmlFor="password" > Contraseña </label>
+							<input type="password" 
+								name="password" 
+								id="password" 
+								value={this.state.password} 
+								onChange={this.onChange}/>
+						</div>
+						<div className="container-input">
+							<button className="button-sesion" 
+								disabled={this.state.isLoading} 
+							>Iniciar sesión</button>
+						</div>
+					</form>
                 </div>
             </div>
         )
