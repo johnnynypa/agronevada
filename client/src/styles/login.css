@@ -1,24 +1,66 @@
-.login{
-    background-image: url("/login.png");
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items:center;
+body {
+	font-family: Roboto;
+	margin : 0;
+	padding: 0;
 }
 
-.login-form{
-    width: 400px;
-    height: 450px;
-    background-color: #f2f2f2;
-    box-shadow: 1px 4px 4px rgba(0, 0, 0, 0.25);
+.login {
+	background-image: url('/fondoLogin2.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
-.login-form > h1 {
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
-    line-height: normal;
-    font-size: 30px;
-    color: #303030;
+.login-form {
+	padding : 54px;
+	background: red;
+	height: 366px;
+	width: 326px;
+	background-color: #f3f3f3;
+}
+
+.container-title {
+	padding-bottom: 20px;
+}
+
+.login-title {
+	color: #2C2929;
+	font-size: 30px;
+}
+
+.container-input {
+	padding-bottom: 35px;
+	display: flex;
+	flex-direction: column;
+}
+
+.container-input label {
+	font-size: 21px;
+	color: #2C2929;
+	margin-bottom: 8px; 
+	cursor: pointer;
+}
+
+.container-input input {
+	height: 40px;
+	font-size: 18px;
+	padding: 0 10px;
+	border: 1px solid #bfbfbf;
+}
+
+.button-sesion {
+	height: 44px;
+	font-size: 22px;
+	padding: 0 20px;
+	color: #fff;
+	background-color: #709D0A;
+	border: none;
+	cursor: pointer;
+}
+
+.container-input:nth-child(4) {
+	border-bottom: 1px solid #bfbfbf;
 }
