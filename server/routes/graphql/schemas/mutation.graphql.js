@@ -8,10 +8,13 @@ export default `
         createSecadoReturned (secado : newSecado) : Secado
         createConductor (conductor : newConductor) : Boolean
         createConductorReturned (conductor : newConductor) : Conductor
+        createLote ( lote : newLote ) : Boolean
+        createLoteReturned (lote : newLote) : Lote
+        createCliente ( cliente : newCliente ) : Boolean
+        createClienteReturned (cliente : newCliente) : Cliente
+        createSalida ( salida : newSalida ) : Boolean
     }
 `
 
 // createUsuario (usuario : newUsuario) : Boolean
 //         createUsuarioReturned (usuario : newUsuario) : Usuario
-// createLote ( lote : newLote ) : Boolean
-//         createLoteReturned (lote : newLote) : Lote

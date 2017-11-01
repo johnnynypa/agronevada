@@ -10,6 +10,7 @@ export default `
     input newSalida{
         direccionDespacho : String!
         fecha : String!
-        cliente : Cliente!
+        idCliente : Int!
+        detalles : [newDetalleSalida]!
     }
 `
