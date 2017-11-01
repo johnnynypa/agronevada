@@ -270,6 +270,32 @@ class Lote {
         })
     })
   }
+  
+  static restarAlSaldo(cantidadKg, idLote){
+  	console.log( "Restar al Saldo es: "+ cantidadKg + " y " + idLote);
+  	return new Promise( (resolve, reject) => {
+  		conex( (err, con) =>{
+  			if(err){
+  				console.log(err);
+          reject("Ha ocurrido un error, intentelo mas tarde.");
+  			}else{
+  				con.query(
+  					'UPDATE lotes SET saldo = lotes.saldo - ? WHERE (idLote = ?)',
+  					[cantidadKg, idLote],
+  					(err) =>{
+  						con.release();
+  						if(err){
+                console.error(err);
+	              reject(err);
+  						}else{
+  							resolve();
+  						}
+  					}
+  				)
+  			}
+  		})
+  	})
+  }
 }
 
 export default Lote;

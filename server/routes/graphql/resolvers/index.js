@@ -8,6 +8,7 @@ import secadoResolver from './definitions/secado.resolver';
 import conductorResolver from './definitions/conductor.resolver';
 import loteResolver from './definitions/lote.resolver';
 import clienteResolver from './definitions/cliente.resolver';
+import salidaResolver from './definitions/salida.resolver';
 
 const resolvers = merge(
     productorResolver,
@@ -15,7 +16,8 @@ const resolvers = merge(
     secadoResolver,
     conductorResolver,
     loteResolver,
-    clienteResolver
+    clienteResolver,
+    salidaResolver
 );
 
 export default resolvers;

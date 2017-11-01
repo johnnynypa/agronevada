@@ -11,5 +11,6 @@ export default `
         direccionDespacho : String!
         fecha : String!
         idCliente : Int!
+        detalles : [newDetalleSalida]!
     }
 `

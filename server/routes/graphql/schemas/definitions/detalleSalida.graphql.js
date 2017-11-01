@@ -8,7 +8,7 @@ export default `
     
     input newDetalleSalida{
         idLote : Int!
-        idSalida : Int!
+        idSalida : Int
         cantidadKg : Float!
     }
 `
