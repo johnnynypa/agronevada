@@ -30,21 +30,22 @@ class Login extends React.Component{
     onSubmit(e){
         e.preventDefault();
         const {username, password } = this.state;
+        this.setState({isLoading:true, errors: "" });
         if(username && password){
-            this.setState({isLoading:true, errors: {} });
 			this.props.loginRequest(this.state)
 			.then(
 				(res) => {
-					this.setState({isLoading: false});
 					if(res.data.error){
 						this.setState({errors: res.data.error});
-						
 					}else{
 						this.context.router.history.push('/');
 					}	
 				}
 			);
+        }else{
+            this.setState({errors: "Rellene todos los campos por favor"});
         }
+        this.setState({isLoading: false});
     }
     
     render(){
@@ -77,7 +78,7 @@ class Login extends React.Component{
 							>Iniciar sesión</button>
 						</div>
 						<div className="container-sErrors">
-							<span className="sesion-errors">{( this.state.errors === "" ) ? "": this.state.errors.toString() }</span>
+							<span className="sesion-errors">{this.state.errors}</span>
 						</div>
 					</form>
                 </div>
