@@ -13,6 +13,8 @@ export default `
         createCliente ( cliente : newCliente ) : Boolean
         createClienteReturned (cliente : newCliente) : Cliente
         createSalida ( salida : newSalida ) : Boolean
+        createAjuste (ajuste: newAjuste) : Boolean
+        createAjusteReturned (ajuste: newAjuste) : Ajuste
     }
 `
 

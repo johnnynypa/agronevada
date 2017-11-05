@@ -22,6 +22,9 @@ export default `
         cliente                         (id : Int)                                      : Cliente
         clientes                                                                        : [Cliente]
         clienteByCedula                 (cc : String)                                   : Cliente
+        ajuste                          (id : Int)                                      : Ajuste
+        ajustes                                                                         : [Ajuste]
+        ajustesByLote                   (idLote : Int)                                  : [Ajuste]
     }
 `;
 
@@ -30,9 +33,6 @@ export default `
 //         usuariosByRole                  (idRole : Int)                                  : [Usuario]
 // role                            (id : Int)                                      : Role
 //         roles                                                                           : [Role]
-// ajuste                          (id : Int)                                      : Ajuste
-//         ajustes                                                                         : [Ajuste]
-//         ajustesByLote                   (idLote : Int)                                  : [Ajuste]
 //         salida                          (id: Int)                                       : Salida
 //         salidas                                                                         : [Salida]
 //         salidasByLote                   (idLote : Int)                                  : [Salida]

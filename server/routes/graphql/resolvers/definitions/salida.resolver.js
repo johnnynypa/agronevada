@@ -28,7 +28,6 @@ function validarDetalles(details){
         for (const Detail of details ){
             try{
                 await Lote.getById(Detail.idLote).then( dat =>{
-                    console.log( "El saldo seria "+ dat.saldo - Detail.cantidadKg);
                     if(!dat || (dat.saldo - Detail.cantidadKg < 0) ){
                         err = true;
                         reject("El lote: "+Detail.idLote+' No posee la cantidad requerida');
