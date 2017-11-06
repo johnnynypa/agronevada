@@ -16,6 +16,7 @@ export default `
         
         createSecado (secado : newSecado) : Boolean
         createSecadoReturned (secado : newSecado) : Secado
+        secadoSetDescripcion (idSecado : Int!, descripcion : String!) : Boolean
         
         createConductor (conductor : newConductor) : Boolean
         createConductorReturned (conductor : newConductor) : Conductor

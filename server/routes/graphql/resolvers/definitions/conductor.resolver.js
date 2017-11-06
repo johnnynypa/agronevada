@@ -58,6 +58,6 @@ export default{
             }else{
                 throw new Error("No hay identificador especificado del productor");
             }
-        },
+        }
     }
 }

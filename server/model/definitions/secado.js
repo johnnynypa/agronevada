@@ -90,6 +90,31 @@ class Secado{
             })
         })
     }
+    
+    static updateSetDescripcion(id, descripcion){
+        return new Promise( (resolve, reject) => {
+            conex( (err, con) => {
+                if(err){
+                    console.log(err);
+                    reject("Ha ocurrido un error, intentelo mas tarde.");
+                }else{
+                    con.query(
+                        'UPDATE tipoSecado SET descripcion = ?  WHERE idTipoSecado = ?',
+                        [descripcion, id],
+                        (error, results) => {
+                            con.release();
+                            if(error){
+                                console.log(error);
+                                reject("Ha ocurrido un error, intentelo mas tarde.");
+                            }else{
+                                resolve(true);
+                            }
+                        }
+                    )
+                }
+            })
+        })
+    }
 }
 
 export default Secado;
