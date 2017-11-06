@@ -28,7 +28,7 @@ class Productor {
                     con.query(
                         'INSERT INTO productores ('+FIELDS.join(', ')+') VALUES (?, ?, ?, ?, ?)',
                         [data.nombreFinca , data.nombreGerente, data.direccion, data.telefono, data.email],
-                        (error, results, fields) =>{
+                        (error, results) =>{
                             con.release();
                             if(error){
                                 console.log(error);
@@ -91,6 +91,131 @@ class Productor {
                                     resolve(results);
                                 else
                                     resolve(null);
+                            }
+                        }
+                    )
+                }
+            })
+        })
+    }
+    
+    static updateSetNombreFinca(id, nombreFinca){
+        return new Promise( (resolve, reject) => {
+            conex( (err, con) => {
+                if(err){
+                    console.log(err);
+                    reject("Ha ocurrido un error, intentelo mas tarde.");
+                }else{
+                    con.query(
+                        'UPDATE productores SET nombreFinca = ?  WHERE idProductor = ?',
+                        [nombreFinca, id],
+                        (error, results) => {
+                            con.release();
+                            if(error){
+                                console.log(error);
+                                reject("Ha ocurrido un error, intentelo mas tarde.");
+                            }else{
+                                resolve(true);
+                            }
+                        }
+                    )
+                }
+            })
+        })
+    }
+    
+    static updateSetNombreGerente(id, nombreGerente){
+        return new Promise( (resolve, reject) => {
+            conex( (err, con) => {
+                if(err){
+                    console.log(err);
+                    reject("Ha ocurrido un error, intentelo mas tarde.");
+                }else{
+                    con.query(
+                        'UPDATE productores SET nombreGerente = ?  WHERE idProductor = ?',
+                        [nombreGerente, id],
+                        (error, results) => {
+                            con.release();
+                            if(error){
+                                console.log(error);
+                                reject("Ha ocurrido un error, intentelo mas tarde.");
+                            }else{
+                                resolve(true);
+                            }
+                        }
+                    )
+                }
+            })
+        })
+    }
+    
+    static updateSetNombreTelefono(id, telefono){
+        return new Promise( (resolve, reject) => {
+            conex( (err, con) => {
+                if(err){
+                    console.log(err);
+                    reject("Ha ocurrido un error, intentelo mas tarde.");
+                }else{
+                    con.query(
+                        'UPDATE productores SET telefono = ?  WHERE idProductor = ?',
+                        [telefono, id],
+                        (error, results) => {
+                            con.release();
+                            if(error){
+                                console.log(error);
+                                reject("Ha ocurrido un error, intentelo mas tarde.");
+                            }else{
+                                resolve(true);
+                            }
+                        }
+                    )
+                }
+            })
+        })
+    }
+    
+    static updateSetNombreDireccion(id, direccion){
+        return new Promise( (resolve, reject) => {
+            conex( (err, con) => {
+                if(err){
+                    console.log(err);
+                    reject("Ha ocurrido un error, intentelo mas tarde.");
+                }else{
+                    con.query(
+                        'UPDATE productores SET direccion = ?  WHERE idProductor = ?',
+                        [direccion, id],
+                        (error, results) => {
+                            con.release();
+                            if(error){
+                                console.log(error);
+                                reject("Ha ocurrido un error, intentelo mas tarde.");
+                            }else{
+                                resolve(true);
+                            }
+                        }
+                    )
+                }
+            })
+        })
+    }
+    
+    static updateSetNombreEmail(id, email){
+        return new Promise( (resolve, reject) => {
+            conex( (err, con) => {
+                if(err){
+                    console.log(err);
+                    reject("Ha ocurrido un error, intentelo mas tarde.");
+                }else{
+                    con.query(
+                        'UPDATE productores SET email = ?  WHERE idProductor = ?',
+                        [email, id],
+                        (error, results) => {
+                            con.release();
+                            if(error){
+                                console.log(error);
+                                reject("Ha ocurrido un error, intentelo mas tarde.");
+                            }else{
+                                resolve(true);
                             }
                         }
                     )
