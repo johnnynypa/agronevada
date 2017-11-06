@@ -2,13 +2,18 @@ export default `
     type Mutation{
         createProductor (productor : newProductor) : Boolean
         createProductorReturned (productor : newProductor) : Productor
-        productorSetNombreFinca(idProductor : Int!, nombreFinca:String) : Boolean
-        productorSetNombreGerente(idProductor : Int!, nombreGerente:String) : Boolean
-        productorSetTelefono(idProductor : Int!, telefono:String) : Boolean
-        productorSetEmail(idProductor : Int!, email:String) : Boolean
-        productorSetDireccion(idProductor : Int!, direccion:String) : Boolean
+        productorSetNombreFinca(idProductor : Int!, nombreFinca:String!) : Boolean
+        productorSetNombreGerente(idProductor : Int!, nombreGerente:String!) : Boolean
+        productorSetTelefono(idProductor : Int!, telefono:String!) : Boolean
+        productorSetEmail(idProductor : Int!, email:String!) : Boolean
+        productorSetDireccion(idProductor : Int!, direccion:String!) : Boolean
+        
         createTipo (tipo : newTipo) : Boolean
         createTipoReturned (tipo : newTipo) : Tipo
+        tipoSetDescripcion(idTipo : Int!, descripcion : String!) : Boolean
+        tipoSetPrecioKg(idTipo : Int!, precioKg : Float!) : Boolean
+        tipoSetBonificacion(idTipo : Int!, bonificacion : Float) : Boolean
+        
         createSecado (secado : newSecado) : Boolean
         createSecadoReturned (secado : newSecado) : Secado
         createConductor (conductor : newConductor) : Boolean

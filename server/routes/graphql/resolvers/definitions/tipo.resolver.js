@@ -44,6 +44,34 @@ export default {
                 })
                 .catch( err => {throw new Error(err)})
             : null;
-        }
+        },
+        
+        tipoSetDescripcion(root, {idTipo, descripcion}){
+            if(idTipo){
+                return Tipo.updateSetDescripcion(idTipo, descripcion)
+                .then( dat => dat )
+                .catch( err => {throw new Error(err)});
+            }else{
+                throw new Error("No hay identificador especificado del productor");
+            }
+        },
+        tipoSetPrecioKg(root, {idTipo, precioKg}){
+            if(idTipo){
+                return Tipo.updateSetPrecioKg(idTipo, precioKg)
+                .then( dat => dat )
+                .catch( err => {throw new Error(err)});
+            }else{
+                throw new Error("No hay identificador especificado del productor");
+            }
+        },
+        tipoSetBonificacion(root, {idTipo, bonificacion}){
+            if(idTipo){
+                return Tipo.updateSetBonificacion(idTipo, bonificacion)
+                .then( dat => dat )
+                .catch( err => {throw new Error(err)});
+            }else{
+                throw new Error("No hay identificador especificado del productor");
+            }
+        },
     }
 }

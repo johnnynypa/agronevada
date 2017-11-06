@@ -14,6 +14,7 @@ const FIELDS = [
     ]
 
 class Tipo{
+    
     static newTipo(type){
         return new Promise( (resolve, reject) =>{
             conex( (err, con) =>{
@@ -96,6 +97,81 @@ class Tipo{
             })
         }
     )}
+    
+    static updateSetDescripcion(id, descripcion){
+        return new Promise( (resolve, reject) => {
+            conex( (err, con) => {
+                if(err){
+                    console.log(err);
+                    reject("Ha ocurrido un error, intentelo mas tarde.");
+                }else{
+                    con.query(
+                        'UPDATE tipoCafe SET descripcion = ?  WHERE idTipoCafe = ?',
+                        [descripcion, id],
+                        (error, results) => {
+                            con.release();
+                            if(error){
+                                console.log(error);
+                                reject("Ha ocurrido un error, intentelo mas tarde.");
+                            }else{
+                                resolve(true);
+                            }
+                        }
+                    )
+                }
+            })
+        })
+    }
+    
+    static updateSetPrecioKg(id, precioKg){
+        return new Promise( (resolve, reject) => {
+            conex( (err, con) => {
+                if(err){
+                    console.log(err);
+                    reject("Ha ocurrido un error, intentelo mas tarde.");
+                }else{
+                    con.query(
+                        'UPDATE tipoCafe SET precioKg = ?  WHERE idTipoCafe = ?',
+                        [precioKg, id],
+                        (error, results) => {
+                            con.release();
+                            if(error){
+                                console.log(error);
+                                reject("Ha ocurrido un error, intentelo mas tarde.");
+                            }else{
+                                resolve(true);
+                            }
+                        }
+                    )
+                }
+            })
+        })
+    }
+    
+    static updateSetBonificacion(id, bonificacion){
+        return new Promise( (resolve, reject) => {
+            conex( (err, con) => {
+                if(err){
+                    console.log(err);
+                    reject("Ha ocurrido un error, intentelo mas tarde.");
+                }else{
+                    con.query(
+                        'UPDATE tipoCafe SET bonificacion = ?  WHERE idTipoCafe = ?',
+                        [bonificacion, id],
+                        (error, results) => {
+                            con.release();
+                            if(error){
+                                console.log(error);
+                                reject("Ha ocurrido un error, intentelo mas tarde.");
+                            }else{
+                                resolve(true);
+                            }
+                        }
+                    )
+                }
+            })
+        })
+    }
 }
 
 export default Tipo;
