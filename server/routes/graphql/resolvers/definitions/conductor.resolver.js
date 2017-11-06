@@ -38,6 +38,26 @@ export default{
                 })
                 .catch( err => {throw new Error(err)})
             : null;
-        }
+        },
+        
+        
+        conductorSetNombre(root, {idConductor, nombre}){
+            if(idConductor){
+                return Conductor.updateSetNombre(idConductor, nombre)
+                .then( dat => dat )
+                .catch( err => {throw new Error(err)});
+            }else{
+                throw new Error("No hay identificador especificado del productor");
+            }
+        },
+        conductorSetTelefono(root, {idConductor, telefono}){
+            if(idConductor){
+                return Conductor.updateSetTelefono(idConductor, telefono)
+                .then( dat => dat )
+                .catch( err => {throw new Error(err)});
+            }else{
+                throw new Error("No hay identificador especificado del productor");
+            }
+        },
     }
 }

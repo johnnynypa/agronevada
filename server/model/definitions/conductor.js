@@ -93,6 +93,56 @@ class Conductor{
             })
         })
     }
+    
+    static updateSetNombre(id, nombre){
+        return new Promise( (resolve, reject) => {
+            conex( (err, con) => {
+                if(err){
+                    console.log(err);
+                    reject("Ha ocurrido un error, intentelo mas tarde.");
+                }else{
+                    con.query(
+                        'UPDATE conductores SET nombre = ?  WHERE idConductor = ?',
+                        [nombre, id],
+                        (error, results) => {
+                            con.release();
+                            if(error){
+                                console.log(error);
+                                reject("Ha ocurrido un error, intentelo mas tarde.");
+                            }else{
+                                resolve(true);
+                            }
+                        }
+                    )
+                }
+            })
+        })
+    }
+    
+    static updateSetTelefono(id, telefono){
+        return new Promise( (resolve, reject) => {
+            conex( (err, con) => {
+                if(err){
+                    console.log(err);
+                    reject("Ha ocurrido un error, intentelo mas tarde.");
+                }else{
+                    con.query(
+                        'UPDATE conductores SET telefono = ?  WHERE idConductor = ?',
+                        [telefono, id],
+                        (error, results) => {
+                            con.release();
+                            if(error){
+                                console.log(error);
+                                reject("Ha ocurrido un error, intentelo mas tarde.");
+                            }else{
+                                resolve(true);
+                            }
+                        }
+                    )
+                }
+            })
+        })
+    }
 }
 
 export default Conductor;

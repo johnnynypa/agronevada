@@ -16,8 +16,12 @@ export default `
         
         createSecado (secado : newSecado) : Boolean
         createSecadoReturned (secado : newSecado) : Secado
+        
         createConductor (conductor : newConductor) : Boolean
         createConductorReturned (conductor : newConductor) : Conductor
+        conductorSetNombre (idConductor : Int!, nombre:String!) : Boolean
+        conductorSetTelefono (idConductor : Int!, telefono:String) : Boolean
+        
         createLote ( lote : newLote ) : Boolean
         createLoteReturned (lote : newLote) : Lote
         createCliente ( cliente : newCliente ) : Boolean
