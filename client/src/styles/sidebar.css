@@ -1,5 +1,10 @@
 .sidebar{
     width: 20vw;
     height: 92vh;
-    background-color: blue;
+    
+    background-color: #F5F5F5;
+    
+    border-right-color: #DCDCDC;
+    border-right-style: solid;
+    border-right-width: 2px;
 }

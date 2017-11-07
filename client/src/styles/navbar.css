@@ -11,8 +11,22 @@
 	align-items: center;
 }
 
+.navbar-header-banner{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.navbar-header-banner > img{
+	width: 40px;
+    margin-right: 10px;
+    margin-left: 20px;
+}
+
 .navbar-logo {
 	color: #fff;
+	font-weight: 500; 
+	font-size: 25px;
 }
 
 .cerrar-sesion {
@@ -22,4 +36,12 @@
 	background-color: transparent;
 	color: #fff;
 	cursor: pointer;
+}
+
+.navbar-header-buttons{
+	margin-right: 4vw;
+	width: 50vw;
+	display: flex;
+	justify-content: flex-end;
+	
 }

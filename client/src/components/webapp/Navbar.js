@@ -10,10 +10,11 @@ class Navbar extends Component {
 		return(
 			<div className="navbar" >
 				<header className="navbar-header">
-					<div>
+					<div className="navbar-header-banner" >
+						<img src="/logo_peque.png" alt="Logo"/>
 						<span className="navbar-logo">Agronevada</span>
 					</div>
-					<div>
+					<div className="navbar-header-buttons" >
 						<span>{this.props.user.nombre}</span>
 						<button className="cerrar-sesion" onClick={this.props.logout}>cerrar sesión</button>
 					</div>
