@@ -39,9 +39,8 @@
 }
 
 .navbar-header-buttons{
-	margin-right: 4vw;
-	width: 50vw;
+	width: 20vw;
 	display: flex;
-	justify-content: flex-end;
+	justify-content: space-around;
 	
 }
