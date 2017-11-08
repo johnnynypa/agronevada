@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import Modal from 'react-modal';
 
 import {conductores, conductor} from '../../../graphql/conductor';
-import ModalData from './ModalData';
+import ModalData from './ModalConductor';
 
 class Conductor extends React.Component{
     
@@ -19,6 +19,7 @@ class Conductor extends React.Component{
 		this.openModal = this.openModal.bind(this);
 		this.afterOpenModal = this.afterOpenModal.bind(this);
 		this.closeModal = this.closeModal.bind(this);
+		this.updateTable = this.updateTable.bind(this);
 	}
 	
 	openModal() {
@@ -34,6 +35,11 @@ class Conductor extends React.Component{
 		this.setState({modalIsOpen: false});
 	}
 
+	updateTable(dat){
+		let Infos = this.state.Infos;
+		Infos.push({id: dat.id, nombre:dat.nombre, telefono: dat.telefono});
+		this.setState({'Infos': Infos});
+	}
 	
 	componentWillMount(){
 		conductores()
@@ -79,7 +85,7 @@ class Conductor extends React.Component{
 					onAfterOpen={this.afterOpenModal}
 					onRequestClose={this.closeModal}>
 					<div className="center-modal">
-						<ModalData/>
+						<ModalData updateTable={this.updateTable}/>
 					</div>
 				</Modal>
             </div>

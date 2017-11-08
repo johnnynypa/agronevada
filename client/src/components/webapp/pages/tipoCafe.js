@@ -1,8 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import Modal from 'react-modal';
+
+import '../../../styles/navbar.css';
 
 import {tipos, tipo} from '../../../graphql/tipo';
+import ModalData from './ModalCafe';
 
 class TipoCafe extends React.Component{
     
@@ -12,6 +16,37 @@ class TipoCafe extends React.Component{
 			Infos : [],
 			error : ""
 		}
+
+		this.openModal = this.openModal.bind(this);
+		this.afterOpenModal = this.afterOpenModal.bind(this);
+		this.closeModal = this.closeModal.bind(this);
+		this.updateTable = this.updateTable.bind(this);
+	}
+	
+	openModal() {
+		this.setState({modalIsOpen: true});
+	}
+	
+	afterOpenModal() {
+		// references are now sync'd and can be accessed.
+		// this.subtitle.style.color = '#f00';
+	}
+	
+	closeModal() {
+		this.setState({modalIsOpen: false});
+	}
+descripcion
+                precioKg
+                bonificacion
+	updateTable(dat){
+		let Infos = this.state.Infos;
+		Infos.push({
+			id: dat.id,
+			descripcion: dat.descripcion,
+		 	precioKg: dat.precioKg, 
+		 	bonificacion: dat.bonificacion
+		 });
+		this.setState({'Infos': Infos});
 	}
 	
 	componentWillMount(){
@@ -31,7 +66,7 @@ class TipoCafe extends React.Component{
         return(
             <div className="Container-working">
 				<div>
-					<button className="button-add">Agregar Tipo Cafe</button>
+					<button id="add" className="button-add" onClick={this.openModal} >Agregar Tipo Cafe</button>
 				</div>
 				<div className="container-table">
 					<table>
@@ -57,6 +92,14 @@ class TipoCafe extends React.Component{
 						</tbody>
 					</table>
 				</div>	
+				<Modal
+					isOpen={this.state.modalIsOpen}
+					onAfterOpen={this.afterOpenModal}
+					onRequestClose={this.closeModal}>
+					<div className="center-modal">
+						<ModalData updateTable={this.updateTable}/>
+					</div>
+				</Modal>
             </div>
         )
     }

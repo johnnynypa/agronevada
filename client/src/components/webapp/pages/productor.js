@@ -1,8 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import Modal from 'react-modal';
 
 import {productores, productor} from '../../../graphql/productor';
+import ModalData from './ModalProductor';
+
 
 class Productor extends React.Component{
     
@@ -12,8 +15,38 @@ class Productor extends React.Component{
 			Infos : [],
 			error : ""
 		}
+		this.openModal = this.openModal.bind(this);
+		this.afterOpenModal = this.afterOpenModal.bind(this);
+		this.closeModal = this.closeModal.bind(this);
+		this.updateTable = this.updateTable.bind(this);
 	}
 	
+	openModal() {
+		this.setState({modalIsOpen: true});
+	}
+	
+	afterOpenModal() {
+		// references are now sync'd and can be accessed.
+		// this.subtitle.style.color = '#f00';
+	}
+	
+	closeModal() {
+		this.setState({modalIsOpen: false});
+	}
+
+	updateTable(dat){
+		let Infos = this.state.Infos;
+		Infos.push({
+			id: dat.id,
+			nombreFinca:dat.nombreFinca,
+			nombreGerente: dat.nombreGerente,
+			telefono: dat.telefono,
+			email : dat.email,
+			direccion: dat.direccion
+		});
+		this.setState({'Infos': Infos});
+	}
+
 	componentWillMount(){
 		productores()
 		.then(dat => {
@@ -29,7 +62,7 @@ class Productor extends React.Component{
         return(
             <div className="Container-working">
 				<div>
-					<button className="button-add">Agregar Productor</button>
+					<button className="button-add" onClick={this.openModal} >Agregar Productor</button>
 				</div>
 				<div className="container-table">
 					<table>
@@ -59,6 +92,14 @@ class Productor extends React.Component{
 						</tbody>
 					</table>
 				</div>	
+				<Modal
+					isOpen={this.state.modalIsOpen}
+					onAfterOpen={this.afterOpenModal}
+					onRequestClose={this.closeModal}>
+					<div className="center-modal">
+						<ModalData updateTable={this.updateTable}/>
+					</div>
+				</Modal>
             </div>
         )
     }

@@ -29,6 +29,7 @@
 	font-weight: bold;
 	letter-spacing: 0.5px;
 	cursor: pointer;
+	outline: none;
 }
 
 .container-table {
