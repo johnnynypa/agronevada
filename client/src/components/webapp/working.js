@@ -1,17 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import TipoCafe from './pages/tipoCafe';
+import TipoSecado from './pages/tipoSecado';
 
 import '../../styles/working.css';
 
 class Working extends React.Component{
     render(){
-        return(
-            <div className="working" >
-                
-            </div>
-        )
+        if(this.props.isWorking == 'tipoCafe'){
+            return(<div className="working" ><TipoCafe /></div>)
+        }else if(this.props.isWorking == 'tipoSecado'){
+            return(<div className="working" ><TipoSecado /></div>)
+        }else{
+            return(<div className="working" ></div>)
+        }
     }
 }
 
-export default Working;
+function mapStateToProps(state){
+    return {
+        isWorking : state.working.isWorking
+    }
+}
+
+export default connect(mapStateToProps)(Working);
