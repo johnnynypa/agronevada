@@ -47,3 +47,29 @@ export function secados(){
         })
     })
 }
+
+export function createSecado(dat){
+    return new Promise( (resolve, reject ) => {
+        graphql.query(`
+            mutation{
+              createSecadoReturned(secado:{
+                descripcion: "`+dat.descripcion+`"
+              }){
+                id
+                descripcion
+              }
+            }
+        `,
+        function(req, res) {
+            if(res.status === 401) {
+                throw new Error('Not authorized')
+            }
+        })
+        .then(function(body) {
+            resolve(body)
+        })
+        .catch(function(err) {
+            reject(err.message)
+        })
+    })
+}

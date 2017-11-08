@@ -62,13 +62,13 @@ typings/
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
 # dependencies
-client/node_modules
+client/node_modules/
 
 # testing
-client/coverage
+client/coverage/
 
 # production
-/build
+client/build/
 
 # misc
 .DS_Store
@@ -81,6 +81,5 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-client/src/config/defaults.json
-client/config/*
- 
+client/src/config/
+config/
