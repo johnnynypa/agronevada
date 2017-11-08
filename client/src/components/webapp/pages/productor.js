@@ -2,12 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
-import '../../../styles/navbar.css';
+import {productores, productor} from '../../../graphql/productor';
 
-import {secados, secado} from '../../../graphql/secado';
-
-class TipoSecado extends React.Component{
-	constructor(props){
+class Productor extends React.Component{
+    
+    constructor(props){
 		super(props);
 		this.state = {
 			Infos : [],
@@ -16,29 +15,32 @@ class TipoSecado extends React.Component{
 	}
 	
 	componentWillMount(){
-		secados()
+		productores()
 		.then(dat => {
-			console.log(dat);
-			console.log(dat.data.secados);
-			this.setState({'Infos' : dat.data.secados});
+			this.setState({'Infos' : dat.data.productores});
 		})
 		.catch( err => {
 			this.setState({'error' : err});
 		})
 	}
+    
     render(){
-    	const {Infos} = this.state;
+        const {Infos} = this.state;
         return(
             <div className="Container-working">
 				<div>
-					<button id="add" className="button-add" onClick={this.handleModalClick}>Agregar Tipo Secado</button>
+					<button className="button-add">Agregar Productor</button>
 				</div>
 				<div className="container-table">
 					<table>
 						<thead>
 							<tr>
 								<th>Id</th>
-								<th>Descripción</th>
+								<th>Finca</th>
+								<th>Gerente</th>
+								<th>Direccion</th>
+								<th>Email</th>
+								<th>Telefono</th>
 								<th>Editar</th>
 							</tr>
 						</thead>
@@ -46,8 +48,12 @@ class TipoSecado extends React.Component{
 							{  Infos && Infos.map((inf, key) =>
 								<tr key={key}>
 									<td>{inf.id}</td>
-									<td>{inf.descripcion}</td>
-									<td><button id="edit" className="button-edit" onClick={this.handleModalClick}>Editar</button></td>
+									<td>{inf.nombreFinca}</td>
+									<td>{inf.nombreGerente}</td>
+									<td>{inf.direccion}</td>
+									<td>{inf.email}</td>
+									<td>{inf.telefono}</td>
+									<td><button className="button-edit">Editar</button></td>
 								</tr>
 							)}
 						</tbody>
@@ -58,4 +64,4 @@ class TipoSecado extends React.Component{
     }
 }
 
-export default TipoSecado;
+export default Productor;
