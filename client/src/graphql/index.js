@@ -1,7 +1,8 @@
 import clientG  from 'graphql-client';
+import config from '../config/defaults.json';
 
 var client = clientG({
-  url: 'http://agronevada-back-juankn.c9users.io:8081/graphql',
+  url: config.api+'/graphql',
   headers: {
     Authorization: 'Bearer ' + localStorage.getItem('_uewyqtkgfjhdLogin')
   }

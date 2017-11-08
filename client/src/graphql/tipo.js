@@ -51,3 +51,33 @@ export function tipos(){
         })
     })
 }
+
+export function createTipo(dat){
+    return new Promise( (resolve, reject ) => {
+        graphql.query(`
+            mutation{
+              createTipoReturned(tipo:{
+                descripcion : "`+dat.descripcion+`"
+                precioKg : `+dat.precioKg+`
+                bonificacion : `+dat.bonificacion+`
+              }){
+                id
+                descripcion
+                precioKg
+                bonificacion
+              }
+            }
+        `,
+        function(req, res) {
+            if(res.status === 401) {
+                throw new Error('Not authorized')
+            }
+        })
+        .then(function(body) {
+            resolve(body)
+        })
+        .catch(function(err) {
+            reject(err.message)
+        })
+    })
+}
