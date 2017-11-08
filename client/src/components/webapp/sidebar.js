@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {changedWork} from '../../redux/actions/working';
 
 import '../../styles/sidebar.css';
+import items from './data/nav';
 
 class Sidebar extends React.Component{
     
@@ -18,9 +19,10 @@ class Sidebar extends React.Component{
     
     render(){
         return(
-            <div className="sidebar">
-                <button onClick={this.cambiar} value="tipoCafe" > Tipo Cafe </button>
-                <button onClick={this.cambiar} value="tipoSecado" > Tipo Secado </button>
+			<div className="sidebar">
+				{items && items.map((item, key) =>
+					<button key={key} onClick={this.cambiar} value={item.url} className="button-sidebar"> {item.title}</button>
+				)}
             </div>
         )
     }

@@ -1,5 +1,59 @@
 .working{
-    width: 80vw;
-    height: 92vh;
+    width: 100%;
     background-color: #FFFFFF;
 }
+
+.Container-working {
+	margin: 15px;
+	padding: 5px;
+}
+
+.button-add {
+	border: none;
+	padding: 15px;
+	font-weight: bold;
+	letter-spacing: 0.4px;
+	cursor: pointer;
+	outline: none;
+	color: white;
+	background-color: rgba(44, 171, 220, 0.77);
+	border-top-left-radius: 15px;
+	border-bottom-right-radius: 15px;
+	box-shadow: inset 0 -0.2em rgba(0,0,0,.3);
+}
+
+.button-edit {
+	border: none;
+	background-color: transparent;
+	color: #3bbfe4;
+	font-weight: bold;
+	letter-spacing: 0.5px;
+	cursor: pointer;
+}
+
+.container-table {
+	margin-top: 20px;
+}
+
+.container-table table {
+	display : flex;
+	justify-content: space-between;	
+	flex-direction: column;
+	width: 100%;
+}
+
+table tr {
+	display: flex;
+	justify-content: space-between;
+	padding: 0 20px;
+	text-align: center;
+	border-bottom: 1px solid #dcdcdc;
+}
+
+th, td {
+	width: 100%;
+	padding: 10px 0;
+	color: #5f5858;
+}
+
+

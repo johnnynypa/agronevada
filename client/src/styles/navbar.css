@@ -1,9 +1,5 @@
-.navbar{
-	height: 8vh;
-}
-
 .navbar-header {
-	height: 100%;
+	padding: 10px 0;
 	background-color: #302361;
 	color: #fff;
 	display: flex;
@@ -18,9 +14,9 @@
 }
 
 .navbar-header-banner > img{
-	width: 40px;
+	width: 30px;
     margin-right: 10px;
-    margin-left: 20px;
+    margin-left: 10px;
 }
 
 .navbar-logo {

@@ -9,9 +9,9 @@ import '../../styles/working.css';
 class Working extends React.Component{
     render(){
         if(this.props.isWorking == 'tipoCafe'){
-            return(<div className="working" ><TipoCafe /></div>)
+            return(<div className="working" > <TipoCafe/></div>)
         }else if(this.props.isWorking == 'tipoSecado'){
-            return(<div className="working" ><TipoSecado /></div>)
+            return(<div className="working" > <TipoSecado/></div>)
         }else{
             return(<div className="working" ></div>)
         }

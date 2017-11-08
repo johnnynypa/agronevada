@@ -6,7 +6,7 @@ class TipoCafe extends React.Component{
     render(){
         return(
             <div>
-                <h1>tipo Cafe</h1>
+                <h1>tipo</h1>
             </div>
         )
     }

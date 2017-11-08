@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {logout} from '../../redux/actions/login';
 
 import '../../styles/navbar.css';
+import './'
 
 class Navbar extends Component {
 	render(){
