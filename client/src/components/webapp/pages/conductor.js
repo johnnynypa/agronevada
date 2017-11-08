@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import Modal from 'react-modal';
 
 import {conductores, conductor} from '../../../graphql/conductor';
+import ModalData from './ModalData';
 
 class Conductor extends React.Component{
     
@@ -76,9 +77,10 @@ class Conductor extends React.Component{
 				<Modal
 					isOpen={this.state.modalIsOpen}
 					onAfterOpen={this.afterOpenModal}
-					onRequestClose={this.closeModal}
-				>
-					<h1> Modal Crear Conductor </h1>
+					onRequestClose={this.closeModal}>
+					<div className="center-modal">
+						<ModalData/>
+					</div>
 				</Modal>
             </div>
         )
