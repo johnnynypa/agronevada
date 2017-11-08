@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import TipoCafe from './pages/tipoCafe';
 import TipoSecado from './pages/tipoSecado';

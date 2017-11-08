@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import Modal from 'react-modal';
 
 import {conductores, conductor} from '../../../graphql/conductor';
 
@@ -10,9 +11,28 @@ class Conductor extends React.Component{
 		super(props);
 		this.state = {
 			Infos : [],
-			error : ""
+			error : "",
+			modalIsOpen: false
 		}
+		
+		this.openModal = this.openModal.bind(this);
+		this.afterOpenModal = this.afterOpenModal.bind(this);
+		this.closeModal = this.closeModal.bind(this);
 	}
+	
+	openModal() {
+		this.setState({modalIsOpen: true});
+	}
+	
+	afterOpenModal() {
+		// references are now sync'd and can be accessed.
+		// this.subtitle.style.color = '#f00';
+	}
+	
+	closeModal() {
+		this.setState({modalIsOpen: false});
+	}
+
 	
 	componentWillMount(){
 		conductores()
@@ -29,7 +49,7 @@ class Conductor extends React.Component{
         return(
             <div className="Container-working">
 				<div>
-					<button className="button-add">Agregar Conductor</button>
+					<button onClick={this.openModal} className="button-add">Agregar Conductor</button>
 				</div>
 				<div className="container-table">
 					<table>
@@ -52,7 +72,14 @@ class Conductor extends React.Component{
 							)}
 						</tbody>
 					</table>
-				</div>	
+				</div>
+				<Modal
+					isOpen={this.state.modalIsOpen}
+					onAfterOpen={this.afterOpenModal}
+					onRequestClose={this.closeModal}
+				>
+					<h1> Modal Crear Conductor </h1>
+				</Modal>
             </div>
         )
     }
