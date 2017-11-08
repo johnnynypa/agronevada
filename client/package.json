@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.17.0",
     "dos-config": "^3.0.2",
+    "graphql-client": "^2.0.0",
     "prop-types": "^15.6.0",
     "proptypes": "^1.1.0",
     "react": "^16.0.0",

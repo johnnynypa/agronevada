@@ -3,10 +3,32 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
 import '../../../styles/navbar.css';
-import Infos from '../data/info';
+
+import {secados, secado} from '../../../graphql/secado';
 
 class TipoSecado extends React.Component{
+	
+	constructor(props){
+		super(props);
+		this.state = {
+			Infos : [],
+			error : ""
+		}
+	}
+	
+	componentWillMount(){
+		secados()
+		.then(dat => {
+			console.log(dat);
+			console.log(dat.data.secados);
+			this.setState({'Infos' : dat.data.secados});
+		})
+		.catch( err => {
+			this.setState({'error' : err});
+		})
+	}
     render(){
+    	const {Infos} = this.state;
         return(
             <div className="Container-working">
 				<div>
