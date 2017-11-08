@@ -56,4 +56,32 @@ th, td {
 	color: #5f5858;
 }
 
+.center-modal{
+	display: flex;
+	justify-content: center;
+	margin-top: 40px;
+}
+
+.cInput-modal {
+	margin-bottom: 20px;	
+}
+
+.title-modal{
+	font-weight: bold;
+	color: red;
+}
+
+
+.input-modify{
+	height: 20px;
+	padding: 5px;
+}
+
+.modal-save {
+	padding: 10px 20px;
+	border: none;
+	outline: none;
+	cursor: pointer;	
+}
+
 
