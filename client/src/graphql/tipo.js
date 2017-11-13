@@ -81,3 +81,78 @@ export function createTipo(dat){
         })
     })
 }
+
+export function updateDataTipo(datOrigin, datNew){
+    return new Promise( (resolve, reject) => {
+        Promise.all([
+            setDescripcion(datOrigin.id, datOrigin.descripcion, datNew.descripcion),
+            setPrecioKg(datOrigin.id, datOrigin.precioKg, datNew.precioKg ),
+            setBonificacion( datOrigin.id, datOrigin.bonificacion, datNew.bonificacion)
+        ])
+        .then( () => {resolve()})
+        .catch( () => { reject("Ha ocurrido un error, recargue la pagina y verifique la informacion") })
+    });
+}
+
+
+function setDescripcion(id, origin, datNew){
+    return new Promise( (res, rej) => {
+        if(origin != datNew){
+            graphql.query(
+            `
+                mutation{
+                    tipoSetDescripcion(`+id+`, `+datNew+` )
+                }
+            `,
+            err => {
+                if(!err)
+                    res();
+                else
+                    rej();
+            }
+            )
+        }else{
+            res();
+        }
+    } )
+}
+
+function setPrecioKg(id, origin, datNew){
+    return new Promise( (res, rej) => {
+        if(origin != datNew){
+            graphql.query(
+            `
+                mutation{
+                    tipoSetPrecioKg(`+id+`, `+datNew+` )
+                }
+            `,
+            err => {
+                if(!err)
+                    res();
+                else
+                    rej();
+            }
+            )
+        }
+    })
+}
+
+function setBonificacion(id, origin, datNew){
+    return new Promise( (res, rej) => {
+        if(origin != datNew){
+            graphql.query(
+            `
+                mutation{
+                    tipoSetBonificacion(`+id+`, `+datNew+` )
+                }
+            `,
+            err => {
+                if(!err)
+                    res();
+                else
+                    rej();
+            }
+            )
+        }
+    })
+}
