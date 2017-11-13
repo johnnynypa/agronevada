@@ -89,3 +89,127 @@ export function createProductor(dat){
         })
     })
 }
+
+export function updateDataProductor(datOrigin, datNew){
+    return new Promise( (resolve, reject) => {
+        Promise.all([
+            setNombreFinca(datOrigin.id, datOrigin.nombreFinca, datNew.nombreFinca),
+            setNombreGerente(datOrigin.id, datOrigin.nombreGerente, datNew.nombreGerente),
+            setTelefono(datOrigin.id, datOrigin.Telefono, datNew.Telefono),
+            setDireccion(datOrigin.id, datOrigin.Direccion, datNew.Direccion),
+            setEmail(datOrigin.id, datOrigin.Email, datNew.Email),
+        ])
+        .then( () => { resolve() })
+        .catch( () => { reject("Ha ocurrido un error, recargue la pagina y vuelva a intentarlo.") })
+    })
+}
+
+function setNombreFinca(id, origin, datNew){
+    return new Promise( (res, rej) => {
+        if(origin != datNew){
+            graphql.query(
+            `
+                mutation{
+                    productorSetNombreFinca(`+id+`, `+datNew+` )
+                }
+            `,
+            err => {
+                if(!err)
+                    res();
+                else
+                    rej();
+            }
+            )
+        }else{
+            res();
+        }
+    })
+}
+
+function setNombreGerente(id, origin, datNew){
+    return new Promise( (res, rej) => {
+        if(origin != datNew){
+            graphql.query(
+            `
+                mutation{
+                    productorSetNombreGerente(`+id+`, `+datNew+` )
+                }
+            `,
+            err => {
+                if(!err)
+                    res();
+                else
+                    rej();
+            }
+            )
+        }else{
+            res();
+        }
+    })
+}
+
+function setTelefono(id, origin, datNew){
+    return new Promise( (res, rej) => {
+        if(origin != datNew){
+            graphql.query(
+            `
+                mutation{
+                    productorSetTelefono(`+id+`, `+datNew+` )
+                }
+            `,
+            err => {
+                if(!err)
+                    res();
+                else
+                    rej();
+            }
+            )
+        }else{
+            res();
+        }
+    })
+}
+
+function setDireccion(id, origin, datNew){
+    return new Promise( (res, rej) => {
+        if(origin != datNew){
+            graphql.query(
+            `
+                mutation{
+                    productorSetDireccion(`+id+`, `+datNew+` )
+                }
+            `,
+            err => {
+                if(!err)
+                    res();
+                else
+                    rej();
+            }
+            )
+        }else{
+            res();
+        }
+    })
+}
+
+function setEmail(id, origin, datNew){
+    return new Promise( (res, rej) => {
+        if(origin != datNew){
+            graphql.query(
+            `
+                mutation{
+                    productorSetEmail(`+id+`, `+datNew+` )
+                }
+            `,
+            err => {
+                if(!err)
+                    res();
+                else
+                    rej();
+            }
+            )
+        }else{
+            res();
+        }
+    })
+}
