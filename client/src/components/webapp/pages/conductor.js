@@ -1,9 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
 import Modal from 'react-modal';
 
-import {conductores, conductor} from '../../../graphql/conductor';
+import {conductores} from '../../../graphql/conductor';
 import ModalData from './ModalConductor';
 
 class Conductor extends React.Component{

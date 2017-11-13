@@ -73,3 +73,21 @@ export function createSecado(dat){
         })
     })
 }
+
+export function updateDataSecado(datOrigin, datNew){
+    return new Promise( (resolve, reject) => {
+        graphql.query(
+            `
+            mutation{
+                secadoSetDescripcion( `+datOrigin.id+`, `+datNew.descripcion+`)
+            }
+            `,
+            (err) => {
+                if(err)
+                    reject()
+                else
+                    resolve();
+            }
+        )
+    })
+}

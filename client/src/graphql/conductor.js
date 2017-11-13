@@ -77,3 +77,38 @@ export function createConductor(dat){
         })
     })
 }
+
+export function updateDataConductor(datOrigin, datNew){
+    return new Promise( async (resolve, reject) => {
+        let errrrr = false;
+        if(datOrigin.nombre =! datNew.nombre ){
+            await graphql.query(
+                `
+                mutation:{
+                    conductorSetNombre( `+datOrigin.id+`, `+datNew.nombre+`)
+                }
+                `,
+                (err, response) => {
+                    errrrr = (err) ? true : false;
+                }
+            )
+        }
+        if(datOrigin.telefono =! datNew.telefono ){
+            await graphql.query(
+                `
+                mutation:{
+                    conductorSetTelefono( `+datOrigin.id+`, `+datNew.telefono+`)
+                }
+                `,
+                (err, response) => {
+                    errrrr = (err) ? true : false;
+                }
+            )
+        }
+        if(errrrr){
+            reject();
+        }else{
+            resolve();
+        }
+    })
+}
