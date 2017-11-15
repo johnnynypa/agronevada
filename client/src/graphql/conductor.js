@@ -85,7 +85,7 @@ export function updateDataConductor(datOrigin, datNew){
             await graphql.query(
                 `
                 mutation:{
-                    conductorSetNombre( `+datOrigin.id+`, `+datNew.nombre+`)
+                    conductorSetNombre( id:`+datOrigin.id+`, nombre: `+datNew.nombre+`)
                 }
                 `,
                 (err, response) => {
@@ -97,7 +97,7 @@ export function updateDataConductor(datOrigin, datNew){
             await graphql.query(
                 `
                 mutation:{
-                    conductorSetTelefono( `+datOrigin.id+`, `+datNew.telefono+`)
+                    conductorSetTelefono( id: `+datOrigin.id+`, telefono: `+datNew.telefono+`)
                 }
                 `,
                 (err, response) => {

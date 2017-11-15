@@ -110,7 +110,7 @@ function setNombreFinca(id, origin, datNew){
             graphql.query(
             `
                 mutation{
-                    productorSetNombreFinca(`+id+`, `+datNew+` )
+                    productorSetNombreFinca( id: `+id+`, nombreFinca: `+datNew+` )
                 }
             `,
             err => {
@@ -132,7 +132,7 @@ function setNombreGerente(id, origin, datNew){
             graphql.query(
             `
                 mutation{
-                    productorSetNombreGerente(`+id+`, `+datNew+` )
+                    productorSetNombreGerente(id: `+id+`, nombreGerente: ` +datNew+` )
                 }
             `,
             err => {
@@ -154,7 +154,7 @@ function setTelefono(id, origin, datNew){
             graphql.query(
             `
                 mutation{
-                    productorSetTelefono(`+id+`, `+datNew+` )
+                    productorSetTelefono( id: `+id+`, telefono: `+datNew+` )
                 }
             `,
             err => {
@@ -176,7 +176,7 @@ function setDireccion(id, origin, datNew){
             graphql.query(
             `
                 mutation{
-                    productorSetDireccion(`+id+`, `+datNew+` )
+                    productorSetDireccion(id: `+id+`, direccion: `+datNew+` )
                 }
             `,
             err => {
@@ -198,7 +198,7 @@ function setEmail(id, origin, datNew){
             graphql.query(
             `
                 mutation{
-                    productorSetEmail(`+id+`, `+datNew+` )
+                    productorSetEmail( id: `+id+`, email: `+datNew+` )
                 }
             `,
             err => {
