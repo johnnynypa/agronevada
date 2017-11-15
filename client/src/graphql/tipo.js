@@ -101,7 +101,7 @@ function setDescripcion(id, origin, datNew){
             graphql.query(
             `
                 mutation{
-                    tipoSetDescripcion(`+id+`, `+datNew+` )
+                    tipoSetDescripcion(id: `+id+`, descripcion: `+datNew+` )
                 }
             `,
             err => {
@@ -123,7 +123,7 @@ function setPrecioKg(id, origin, datNew){
             graphql.query(
             `
                 mutation{
-                    tipoSetPrecioKg(`+id+`, `+datNew+` )
+                    tipoSetPrecioKg( id: `+id+`, precioKg: `+datNew+` )
                 }
             `,
             err => {
@@ -143,7 +143,7 @@ function setBonificacion(id, origin, datNew){
             graphql.query(
             `
                 mutation{
-                    tipoSetBonificacion(`+id+`, `+datNew+` )
+                    tipoSetBonificacion( id:`+id+`, bonificacion: `+datNew+` )
                 }
             `,
             err => {

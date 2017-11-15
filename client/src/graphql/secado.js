@@ -79,7 +79,7 @@ export function updateDataSecado(datOrigin, datNew){
         graphql.query(
             `
             mutation{
-                secadoSetDescripcion( `+datOrigin.id+`, `+datNew.descripcion+`)
+                secadoSetDescripcion(id:  `+datOrigin.id+`, descripcion: `+datNew.descripcion+`)
             }
             `,
             (err) => {
