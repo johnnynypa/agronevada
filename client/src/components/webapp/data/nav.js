@@ -14,5 +14,9 @@ export default [
 	{
 		title: 'Conductores',
 		url: 'conductores'
+	},
+	{
+		title: 'Clientes',
+		url: 'clientes'
 	}
 ];

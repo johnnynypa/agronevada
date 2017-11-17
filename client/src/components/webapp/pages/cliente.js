@@ -1,23 +1,22 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
 import Modal from 'react-modal';
 
-import {productores, productor} from '../../../graphql/productor';
-import ModalData from './modalNew/ModalProductor';
-import ModalDataEdit from './modalEdit/ModalProductorEdit';
+import {clientes, cliente} from '../../../graphql/cliente';
+import ModalData from './modalNew/ModalCliente.js';
+import ModalDataEdit from './modalEdit/ModalClienteEdit.js';
 
-
-class Productor extends React.Component{
+class Cliente extends React.Component{
     
     constructor(props){
 		super(props);
 		this.state = {
 			Infos : [],
 			error : "",
+			modalIsOpen: false,
 			typeEdit : {},
 			modalIsOpenEdit : false
 		}
+		
 		this.openModal = this.openModal.bind(this);
 		this.closeModal = this.closeModal.bind(this);
 		this.updateTable = this.updateTable.bind(this);
@@ -28,12 +27,13 @@ class Productor extends React.Component{
 			this.setState({modalIsOpen: true});
 		}else{
 			console.log(e.target.id);
-			productor(e.target.id)
+			cliente(e.target.id)
 			.then(dat => {
 				console.log("Los datos devueltos son: " + JSON.stringify(dat))
 				this.setState({modalIsOpenEdit: true, typeEdit : dat})
 			})
 			.catch( err => { alert("Ha ocurrido un error, vuelva a intentarlo") });
+			
 		}
 	}
 	
@@ -43,21 +43,14 @@ class Productor extends React.Component{
 
 	updateTable(dat){
 		let Infos = this.state.Infos;
-		Infos.push({
-			id: dat.id,
-			nombreFinca:dat.nombreFinca,
-			nombreGerente: dat.nombreGerente,
-			telefono: dat.telefono,
-			email : dat.email,
-			direccion: dat.direccion
-		});
+		Infos.push({id: dat.id, cedula: dat.cedula, nombre:dat.nombre, direccion: dat.direccion, email: dat.email, telefono: dat.telefono});
 		this.setState({'Infos': Infos});
 	}
-
+	
 	componentWillMount(){
-		productores()
+		clientes()
 		.then(dat => {
-			this.setState({'Infos' : dat.data.productores});
+			this.setState({'Infos' : dat.data.clientes});
 		})
 		.catch( err => {
 			this.setState({'error' : err});
@@ -69,18 +62,18 @@ class Productor extends React.Component{
         return(
             <div className="Container-working">
 				<div>
-					<button id="add" className="button-add" onClick={this.openModal} >Agregar Productor</button>
+					<button id="add" onClick={this.openModal} className="button-add">Agregar Cliente</button>
 				</div>
 				<div className="container-table">
 					<table>
 						<thead>
 							<tr>
 								<th>Id</th>
-								<th>Finca</th>
-								<th>Gerente</th>
+								<th>Nombre</th>
+								<th>Cedula</th>
 								<th>Direccion</th>
-								<th>Email</th>
 								<th>Telefono</th>
+								<th>Email</th>
 								<th>Editar</th>
 							</tr>
 						</thead>
@@ -88,17 +81,17 @@ class Productor extends React.Component{
 							{  Infos && Infos.map((inf, key) =>
 								<tr key={key}>
 									<td>{inf.id}</td>
-									<td>{inf.nombreFinca}</td>
-									<td>{inf.nombreGerente}</td>
+									<td>{inf.nombre}</td>
+									<td>{inf.cedula}</td>
 									<td>{inf.direccion}</td>
-									<td>{inf.email}</td>
 									<td>{inf.telefono}</td>
+									<td>{inf.email}</td>
 									<td><button id={inf.id} onClick={this.openModal} className="button-edit">Editar</button></td>
 								</tr>
 							)}
 						</tbody>
 					</table>
-				</div>	
+				</div>
 				<Modal
 					isOpen={this.state.modalIsOpen}
 					onRequestClose={this.closeModal}>
@@ -112,7 +105,7 @@ class Productor extends React.Component{
 					<div className="center-modal">
 						<ModalDataEdit
 							closeModal={this.closeModal}
-							productorEdit={this.state.typeEdit}
+							clienteEdit={this.state.typeEdit}
 						/>
 					</div>
 				</Modal>
@@ -121,4 +114,4 @@ class Productor extends React.Component{
     }
 }
 
-export default Productor;
+export default Cliente;
