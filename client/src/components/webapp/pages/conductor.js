@@ -1,8 +1,9 @@
 import React from 'react';
 import Modal from 'react-modal';
 
-import {conductores} from '../../../graphql/conductor';
-import ModalData from './ModalConductor';
+import {conductores, conductor} from '../../../graphql/conductor';
+import ModalData from './modalNew/ModalConductor';
+import ModalDataEdit from './modalEdit/ModalConductorEdit';
 
 class Conductor extends React.Component{
     
@@ -11,26 +12,33 @@ class Conductor extends React.Component{
 		this.state = {
 			Infos : [],
 			error : "",
-			modalIsOpen: false
+			modalIsOpen: false,
+			typeEdit : {},
+			modalIsOpenEdit : false
 		}
 		
 		this.openModal = this.openModal.bind(this);
-		this.afterOpenModal = this.afterOpenModal.bind(this);
 		this.closeModal = this.closeModal.bind(this);
 		this.updateTable = this.updateTable.bind(this);
 	}
 	
-	openModal() {
-		this.setState({modalIsOpen: true});
-	}
-	
-	afterOpenModal() {
-		// references are now sync'd and can be accessed.
-		// this.subtitle.style.color = '#f00';
+	openModal(e) {
+		if(e.target.id === "add"){ 
+			this.setState({modalIsOpen: true});
+		}else{
+			console.log(e.target.id);
+			conductor(e.target.id)
+			.then(dat => {
+				console.log("Los datos devueltos son: " + JSON.stringify(dat))
+				this.setState({modalIsOpenEdit: true, typeEdit : dat})
+			})
+			.catch( err => { alert("Ha ocurrido un error, vuelva a intentarlo") });
+			
+		}
 	}
 	
 	closeModal() {
-		this.setState({modalIsOpen: false});
+		this.setState({modalIsOpen: false, modalIsOpenEdit: false});
 	}
 
 	updateTable(dat){
@@ -72,7 +80,7 @@ class Conductor extends React.Component{
 									<td>{inf.id}</td>
 									<td>{inf.nombre}</td>
 									<td>{inf.telefono}</td>
-									<td><button className="button-edit">Editar</button></td>
+									<td><button id={inf.id} onClick={this.openModal} className="button-edit">Editar</button></td>
 								</tr>
 							)}
 						</tbody>
@@ -84,6 +92,16 @@ class Conductor extends React.Component{
 					onRequestClose={this.closeModal}>
 					<div className="center-modal">
 						<ModalData updateTable={this.updateTable}/>
+					</div>
+				</Modal>
+				<Modal
+					isOpen={this.state.modalIsOpenEdit}
+					onRequestClose={this.closeModal}>
+					<div className="center-modal">
+						<ModalDataEdit
+							closeModal={this.closeModal}
+							conductorEdit={this.state.typeEdit}
+						/>
 					</div>
 				</Modal>
             </div>

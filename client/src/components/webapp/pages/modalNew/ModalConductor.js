@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-import { createConductor } from '../../../graphql/conductor';
+import { createConductor } from '../../../../graphql/conductor';
 
 class ModalConductor extends Component {
 	constructor(){

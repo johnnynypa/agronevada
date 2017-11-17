@@ -95,9 +95,9 @@ export function updateDataProductor(datOrigin, datNew){
         Promise.all([
             setNombreFinca(datOrigin.id, datOrigin.nombreFinca, datNew.nombreFinca),
             setNombreGerente(datOrigin.id, datOrigin.nombreGerente, datNew.nombreGerente),
-            setTelefono(datOrigin.id, datOrigin.Telefono, datNew.Telefono),
-            setDireccion(datOrigin.id, datOrigin.Direccion, datNew.Direccion),
-            setEmail(datOrigin.id, datOrigin.Email, datNew.Email),
+            setTelefono(datOrigin.id, datOrigin.Telefono, datNew.telefono),
+            setDireccion(datOrigin.id, datOrigin.Direccion, datNew.direccion),
+            setEmail(datOrigin.id, datOrigin.Email, datNew.email),
         ])
         .then( () => { resolve() })
         .catch( () => { reject("Ha ocurrido un error, recargue la pagina y vuelva a intentarlo.") })
@@ -106,11 +106,11 @@ export function updateDataProductor(datOrigin, datNew){
 
 function setNombreFinca(id, origin, datNew){
     return new Promise( (res, rej) => {
-        if(origin != datNew){
+        if(origin != datNew && datNew ){
             graphql.query(
             `
                 mutation{
-                    productorSetNombreFinca( id: `+id+`, nombreFinca: `+datNew+` )
+                    productorSetNombreFinca( idProductor: `+id+`, nombreFinca: "`+datNew+`" )
                 }
             `,
             err => {
@@ -128,11 +128,11 @@ function setNombreFinca(id, origin, datNew){
 
 function setNombreGerente(id, origin, datNew){
     return new Promise( (res, rej) => {
-        if(origin != datNew){
+        if(origin != datNew && datNew){
             graphql.query(
             `
                 mutation{
-                    productorSetNombreGerente(id: `+id+`, nombreGerente: ` +datNew+` )
+                    productorSetNombreGerente(idProductor: `+id+`, nombreGerente: "` +datNew+`" )
                 }
             `,
             err => {
@@ -150,11 +150,11 @@ function setNombreGerente(id, origin, datNew){
 
 function setTelefono(id, origin, datNew){
     return new Promise( (res, rej) => {
-        if(origin != datNew){
+        if(origin != datNew && datNew){
             graphql.query(
             `
                 mutation{
-                    productorSetTelefono( id: `+id+`, telefono: `+datNew+` )
+                    productorSetTelefono( idProductor: `+id+`, telefono: "`+datNew+`" )
                 }
             `,
             err => {
@@ -172,11 +172,11 @@ function setTelefono(id, origin, datNew){
 
 function setDireccion(id, origin, datNew){
     return new Promise( (res, rej) => {
-        if(origin != datNew){
+        if(origin != datNew && datNew){
             graphql.query(
             `
                 mutation{
-                    productorSetDireccion(id: `+id+`, direccion: `+datNew+` )
+                    productorSetDireccion(idProductor: `+id+`, direccion: "`+datNew+`" )
                 }
             `,
             err => {
@@ -194,11 +194,11 @@ function setDireccion(id, origin, datNew){
 
 function setEmail(id, origin, datNew){
     return new Promise( (res, rej) => {
-        if(origin != datNew){
+        if(origin != datNew && datNew){
             graphql.query(
             `
                 mutation{
-                    productorSetEmail( id: `+id+`, email: `+datNew+` )
+                    productorSetEmail( idProductor: `+id+`, email: "`+datNew+`" )
                 }
             `,
             err => {

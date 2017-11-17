@@ -18,9 +18,9 @@ import Login from './components/login';
 const store = createStore(
     rootReducer,
     compose(
-        applyMiddleware(thunk),
+        applyMiddleware(thunk)
         // eslint-disable-next-line
-        window.devToolsExtension ? window.devToolsExtension() : f = f
+        // window.devToolsExtension ? window.devToolsExtension() : f = f
     )
 );
 

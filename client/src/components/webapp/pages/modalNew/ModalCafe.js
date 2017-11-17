@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-import { createTipo as createCafe } from '../../../graphql/tipo';
+import { createTipo as createCafe } from '../../../../graphql/tipo';
 
 class ModalCafe extends Component {
 	constructor(){

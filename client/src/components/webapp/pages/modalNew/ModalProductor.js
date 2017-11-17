@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-import { createProductor } from '../../../graphql/productor';
+import { createProductor } from '../../../../graphql/productor';
 
 class ModalProductor extends Component {
 	constructor(){

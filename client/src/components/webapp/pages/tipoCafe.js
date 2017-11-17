@@ -6,7 +6,8 @@ import Modal from 'react-modal';
 import '../../../styles/navbar.css';
 
 import {tipos, tipo} from '../../../graphql/tipo';
-import ModalData from './ModalCafe';
+import ModalData from './modalNew/ModalCafe';
+import ModalDataEdit from './modalEdit/ModalCafeEdit';
 
 class TipoCafe extends React.Component{
     
@@ -14,26 +15,35 @@ class TipoCafe extends React.Component{
 		super(props);
 		this.state = {
 			Infos : [],
-			error : ""
+			error : "",
+			typeEdit : {},
+			modalIsOpen : false,
+			modalIsOpenEdit : false
 		}
 
 		this.openModal = this.openModal.bind(this);
-		this.afterOpenModal = this.afterOpenModal.bind(this);
 		this.closeModal = this.closeModal.bind(this);
 		this.updateTable = this.updateTable.bind(this);
+		
 	}
 	
-	openModal() {
-		this.setState({modalIsOpen: true});
-	}
-	
-	afterOpenModal() {
-		// references are now sync'd and can be accessed.
-		// this.subtitle.style.color = '#f00';
+	openModal(e) {
+		if(e.target.id === "add"){ 
+			this.setState({modalIsOpen: true});
+		}else{
+			console.log(e.target.id);
+			tipo(e.target.id)
+			.then(dat => {
+				console.log("Los datos devueltos son: " + JSON.stringify(dat))
+				this.setState({modalIsOpenEdit: true, typeEdit : dat})
+			})
+			.catch( err => { alert("Ha ocurrido un error, vuelva a intentarlo") });
+			
+		}
 	}
 	
 	closeModal() {
-		this.setState({modalIsOpen: false});
+		this.setState({modalIsOpen: false, modalIsOpenEdit: false});
 	}
 descripcion
                 precioKg
@@ -47,6 +57,19 @@ descripcion
 		 	bonificacion: dat.bonificacion
 		 });
 		this.setState({'Infos': Infos});
+	}
+	
+	updateTableEdit(){
+		this.setState({typeEdit : {}});
+		tipos()
+		.then(dat => {
+			console.log(dat);
+			console.log(dat.data.tipos);
+			this.setState({'Infos' : dat.data.tipos});
+		})
+		.catch( err => {
+			this.setState({'error' : err});
+		})
 	}
 	
 	componentWillMount(){
@@ -81,12 +104,12 @@ descripcion
 						</thead>
 						<tbody>
 							{  Infos && Infos.map((inf, key) =>
-								<tr key={key}>
+								<tr key={key} >
 									<td>{inf.id}</td>
 									<td>{inf.descripcion}</td>
 									<td>{inf.precioKg}</td>
 									<td>{inf.bonificacion}</td>
-									<td><button className="button-edit">Editar</button></td>
+									<td><button className="button-edit" id={inf.id} onClick={this.openModal}>Editar</button></td>
 								</tr>
 							)}
 						</tbody>
@@ -94,10 +117,19 @@ descripcion
 				</div>	
 				<Modal
 					isOpen={this.state.modalIsOpen}
-					onAfterOpen={this.afterOpenModal}
 					onRequestClose={this.closeModal}>
 					<div className="center-modal">
-						<ModalData updateTable={this.updateTable}/>
+						<ModalData updateTable={this.updateTable} />
+					</div>
+				</Modal>
+				<Modal
+					isOpen={this.state.modalIsOpenEdit}
+					onRequestClose={this.closeModal}>
+					<div className="center-modal">
+						<ModalDataEdit
+							closeModal={this.closeModal}
+							tipoEdit={this.state.typeEdit}
+						/>
 					</div>
 				</Modal>
             </div>

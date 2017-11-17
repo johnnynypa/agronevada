@@ -53,7 +53,7 @@ class Productor {
                     reject("Ha ocurrido un error en el servidor, intentelo mas tarde");
                 }else{
                     con.query(
-                        'SELECT '+ atributos.join(', ') +' FROM productores WHERE id = ? LIMIT 1',
+                        'SELECT '+ atributos.join(', ') +' FROM productores WHERE idProductor = ? LIMIT 1',
                         [id],
                         (error, results, fields) =>{
                             con.release();

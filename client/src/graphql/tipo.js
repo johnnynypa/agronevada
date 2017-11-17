@@ -83,6 +83,8 @@ export function createTipo(dat){
 }
 
 export function updateDataTipo(datOrigin, datNew){
+    console.log("Los originales son: " + JSON.stringify(datOrigin));
+    console.log("Los nuevos son: " + JSON.stringify(datNew));
     return new Promise( (resolve, reject) => {
         Promise.all([
             setDescripcion(datOrigin.id, datOrigin.descripcion, datNew.descripcion),
@@ -97,11 +99,11 @@ export function updateDataTipo(datOrigin, datNew){
 
 function setDescripcion(id, origin, datNew){
     return new Promise( (res, rej) => {
-        if(origin != datNew){
+        if(origin != datNew && datNew){
             graphql.query(
             `
                 mutation{
-                    tipoSetDescripcion(id: `+id+`, descripcion: `+datNew+` )
+                    tipoSetDescripcion(idTipo: `+id+`, descripcion: "`+datNew+`" )
                 }
             `,
             err => {
@@ -119,11 +121,11 @@ function setDescripcion(id, origin, datNew){
 
 function setPrecioKg(id, origin, datNew){
     return new Promise( (res, rej) => {
-        if(origin != datNew){
+        if(origin != datNew && datNew){
             graphql.query(
             `
                 mutation{
-                    tipoSetPrecioKg( id: `+id+`, precioKg: `+datNew+` )
+                    tipoSetPrecioKg( idTipo: `+id+`, precioKg: `+datNew+` )
                 }
             `,
             err => {
@@ -139,11 +141,11 @@ function setPrecioKg(id, origin, datNew){
 
 function setBonificacion(id, origin, datNew){
     return new Promise( (res, rej) => {
-        if(origin != datNew){
+        if(origin != datNew && datNew ){
             graphql.query(
             `
                 mutation{
-                    tipoSetBonificacion( id:`+id+`, bonificacion: `+datNew+` )
+                    tipoSetBonificacion( idTipo:`+id+`, bonificacion: `+datNew+` )
                 }
             `,
             err => {

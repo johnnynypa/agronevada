@@ -79,36 +79,58 @@ export function createConductor(dat){
 }
 
 export function updateDataConductor(datOrigin, datNew){
-    return new Promise( async (resolve, reject) => {
-        let errrrr = false;
-        if(datOrigin.nombre =! datNew.nombre ){
-            await graphql.query(
-                `
-                mutation:{
-                    conductorSetNombre( id:`+datOrigin.id+`, nombre: `+datNew.nombre+`)
+    return new Promise( (resolve, reject) => {
+        Promise.all([
+            setNombre(datOrigin.id, datOrigin.nombre, datNew.nombre),
+            setTelefono(datOrigin.id, datOrigin.telefono, datNew.telefono)
+        ])
+        .then( () => {resolve();} )
+        .catch( () => { reject("Ha ocurrido un error, recargue la pagina y verifique la informacion") })
+    })
+}
+
+function setNombre(id, origin, datNew){
+    return new Promise( (res, rej) => {
+        if(origin != datNew){
+            graphql.query(
+            `
+                mutation{
+                    conductorSetNombre( idConductor:`+id+`, nombre: "`+datNew+`")
                 }
-                `,
-                (err, response) => {
-                    errrrr = (err) ? true : false;
-                }
+            `,
+            err => {
+                console.log(err);
+                if(!err)
+                    res();
+                else
+                    rej();
+            }
             )
-        }
-        if(datOrigin.telefono =! datNew.telefono ){
-            await graphql.query(
-                `
-                mutation:{
-                    conductorSetTelefono( id: `+datOrigin.id+`, telefono: `+datNew.telefono+`)
-                }
-                `,
-                (err, response) => {
-                    errrrr = (err) ? true : false;
-                }
-            )
-        }
-        if(errrrr){
-            reject();
         }else{
-            resolve();
+            res();
+        }
+    })
+}
+
+function setTelefono(id, origin, datNew){
+    return new Promise( (res, rej) => {
+        if(origin != datNew){
+            graphql.query(
+            `
+                mutation{
+                    conductorSetTelefono( idConductor:`+id+`, telefono: "`+datNew+`")
+                }
+            `,
+            err => {
+                console.log(err);
+                if(!err)
+                    res();
+                else
+                    rej();
+            }
+            )
+        }else{
+            res();
         }
     })
 }

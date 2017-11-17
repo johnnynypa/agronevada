@@ -4,7 +4,8 @@ import {connect} from 'react-redux';
 import Modal from 'react-modal';
 
 import {productores, productor} from '../../../graphql/productor';
-import ModalData from './ModalProductor';
+import ModalData from './modalNew/ModalProductor';
+import ModalDataEdit from './modalEdit/ModalProductorEdit';
 
 
 class Productor extends React.Component{
@@ -13,25 +14,31 @@ class Productor extends React.Component{
 		super(props);
 		this.state = {
 			Infos : [],
-			error : ""
+			error : "",
+			typeEdit : {},
+			modalIsOpenEdit : false
 		}
 		this.openModal = this.openModal.bind(this);
-		this.afterOpenModal = this.afterOpenModal.bind(this);
 		this.closeModal = this.closeModal.bind(this);
 		this.updateTable = this.updateTable.bind(this);
 	}
 	
-	openModal() {
-		this.setState({modalIsOpen: true});
-	}
-	
-	afterOpenModal() {
-		// references are now sync'd and can be accessed.
-		// this.subtitle.style.color = '#f00';
+	openModal(e) {
+		if(e.target.id === "add"){ 
+			this.setState({modalIsOpen: true});
+		}else{
+			console.log(e.target.id);
+			productor(e.target.id)
+			.then(dat => {
+				console.log("Los datos devueltos son: " + JSON.stringify(dat))
+				this.setState({modalIsOpenEdit: true, typeEdit : dat})
+			})
+			.catch( err => { alert("Ha ocurrido un error, vuelva a intentarlo") });
+		}
 	}
 	
 	closeModal() {
-		this.setState({modalIsOpen: false});
+		this.setState({modalIsOpen: false, modalIsOpenEdit: false});
 	}
 
 	updateTable(dat){
@@ -86,7 +93,7 @@ class Productor extends React.Component{
 									<td>{inf.direccion}</td>
 									<td>{inf.email}</td>
 									<td>{inf.telefono}</td>
-									<td><button className="button-edit">Editar</button></td>
+									<td><button id={inf.id} onClick={this.openModal} className="button-edit">Editar</button></td>
 								</tr>
 							)}
 						</tbody>
@@ -94,10 +101,19 @@ class Productor extends React.Component{
 				</div>	
 				<Modal
 					isOpen={this.state.modalIsOpen}
-					onAfterOpen={this.afterOpenModal}
 					onRequestClose={this.closeModal}>
 					<div className="center-modal">
 						<ModalData updateTable={this.updateTable}/>
+					</div>
+				</Modal>
+				<Modal
+					isOpen={this.state.modalIsOpenEdit}
+					onRequestClose={this.closeModal}>
+					<div className="center-modal">
+						<ModalDataEdit
+							closeModal={this.closeModal}
+							productorEdit={this.state.typeEdit}
+						/>
 					</div>
 				</Modal>
             </div>
