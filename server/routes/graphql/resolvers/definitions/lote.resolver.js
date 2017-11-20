@@ -1,6 +1,10 @@
 'use strict';
 
 import Lote from '../../../../model/definitions/lote';
+import Conductor from '../../../../model/definitions/conductor';
+import Productor from '../../../../model/definitions/productor';
+import Tipo from '../../../../model/definitions/tipo';
+import Secado from '../../../../model/definitions/secado';
 
 export default {
     Query:{
@@ -51,46 +55,63 @@ export default {
          * @param lote : Lote
          * */
         productor(lote){
-            return {
-                id : lote.idProductor,
-                nombreFinca : lote.nombreFincaProductor,
-                nombreGerente : lote.nombreGerenteProductor,
-                direccion : lote.direccionProductor,
-                telefono : lote.telefonoProductor,
-                email : lote.emailProductor
-            }
+            return Productor.getById(lote.idProductor)
+            .then( (dat) => {
+                return {
+                    id : dat.id,
+                    nombreFinca : dat.nombreFinca,
+                    nombreGerente : dat.nombreGerente,
+                    direccion : dat.direccion,
+                    telefono : dat.telefono,
+                    email : dat.email
+                }
+            })
+            .catch(err => {throw new Error(err)})
         },
         /**
          * @param lote : Lote
          * */
         conductor(lote){
-            return {
-                id : lote.idConductor,
-                nombre : lote.nombreConductor,
-                telefono : lote.telefonoConductor
-            }
+
+            return Conductor.getById(lote.idConductor)
+            .then( (dat) => {
+                return {
+                    id : dat.id,
+                    nombre : dat.nombre,
+                    telefono : dat.telefono
+                }
+            })
+            .catch(err => {throw new Error(err)})
         },
         
         /**
          * @param lote : Lote
          * */
         secado(lote){
-            return {
-                id : lote.idSecado,
-                descripcion : lote.descripcionTipoSecado
-            }
+            return Secado.getById(lote.idSecado)
+            .then( dat => {
+                return {
+                    id : dat.id,
+                    descripcion : dat.descripcion
+                }
+            })
+            .catch(err => {throw new Error(err)})
         },
         
         /**
          * @param lote : Lote
          * */
         tipo(lote){
-            return {
-                id : lote.idTipo,
-                descripcion : lote.descripcionTipoCafe,
-                precioKg : lote.precioKgTipoCafe,
-                bonificacion : lote.bonificacionTipoCafe
-            }
+            return Tipo.getById(lote.idTipo)
+            .then( dat => {
+                return {
+                    id : dat.id,
+                    descripcion : dat.descripcion,
+                    precioKg : dat.precioKg,
+                    bonificacion : dat.bonificacion
+                }
+            })
+            .catch(err => {throw new Error(err)})
         },
     },
     Mutation:{
@@ -112,6 +133,7 @@ export default {
         createLoteReturned(root, {lote}){
             return (lote) ? Lote.newLote(lote)
                 .then( dat => {
+                    console.log(dat);
                     lote.id = dat;
                     return lote;
                 })

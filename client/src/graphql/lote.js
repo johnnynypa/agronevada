@@ -84,16 +84,29 @@ export function lote(id){
     })
 }
 
+function converDate(date){
+  let d = new Date(date),
+    month = '' + (d.getMonth() + 1),
+    day = '' + d.getDate(),
+    year = d.getFullYear();
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return [year, month, day].join('-');
+}
+
 export function createLote(lote){
     return new Promise( (resolve, reject) => {
+      console.log( JSON.stringify(lote));
         graphql.query(`
             mutation{
               createLoteReturned(lote:{
-                idProductor : `+ lote.idProductor +`
-                idConductor : `+ lote.idConductor +`
-                idSecado : `+ lote.idSecado +`
-                idTipo : `+ lote.idTipo +`
-                fecha : `+ lote.fecha +`
+                idProductor : `+ lote.productorSelected.value +`
+                idConductor : `+ lote.conductorSelected.value +`
+                idSecado : `+ lote.secadoSelected.value +`
+                idTipo : `+ lote.tipoSelected.value +`
+                fecha : "`+ converDate(lote.fecha) +`"
                 cantidadKg : `+ lote.cantidadKg +`
                 factorRendimiento : `+ lote.factorRendimiento +`
                 humedad : `+ lote.humedad +`
@@ -143,3 +156,4 @@ export function createLote(lote){
         })
     })
 }
+

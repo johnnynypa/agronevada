@@ -32,9 +32,9 @@ class ModalLote extends Component {
 			cantidadKg : 0,
 			factorRendimiento : 0,
 			humedad : 0,
+			pruebaTaza : 0,
 			precioBase : 0,
 			retefuente : 0,
-			pruebaTaza : 0,
 			bonificacion : 0,
 			descuento: 0
 		}
@@ -120,17 +120,17 @@ class ModalLote extends Component {
 	
 	_onSelectSecado (option){
 		console.log('You selected '+ option.label + ". Y su id es: " + option.value)
-		this.setState({tipoSelected: option})
+		this.setState({secadoSelected: option})
 	}
 	
 	_onSelectProductor (option){
 		console.log('You selected '+ option.label + ". Y su id es: " + option.value)
-		this.setState({tipoSelected: option})
+		this.setState({productorSelected: option})
 	}
 	
 	_onSelectConductor (option){
 		console.log('You selected '+ option.label + ". Y su id es: " + option.value)
-		this.setState({tipoSelected: option})
+		this.setState({conductorSelected: option})
 	}
 
 	onSelectFecha(date){
@@ -146,6 +146,7 @@ class ModalLote extends Component {
 				
 				<div className="cInput-modal">
 					<Dropdown
+						id="listTipo"
 						options={this.state.tiposList}
 						value={this.state.tipoSelected ? this.state.tipoSelected : null}
 						onChange={this._onSelectTipo}
@@ -154,6 +155,7 @@ class ModalLote extends Component {
 				</div>
 				<div className="cInput-modal">
 					<Dropdown
+						id="listSecado"
 						options={this.state.secadosList}
 						value={this.state.secadoSelected ? this.state.secadoSelected : null}
 						onChange={this._onSelectSecado }
@@ -162,6 +164,7 @@ class ModalLote extends Component {
 				</div>
 				<div className="cInput-modal">
 					<Dropdown
+						id="listProductor"
 						options={this.state.productorList}
 						value={this.state.productorSelected ? this.state.productorSelected : null}
 						onChange={this._onSelectProductor }
@@ -170,6 +173,7 @@ class ModalLote extends Component {
 				</div>
 				<div className="cInput-modal">
 					<Dropdown
+						id="listConductor"
 						options={this.state.conductorList}
 						value={this.state.conductorSelected ? this.state.conductorSelected : null}
 						onChange={this._onSelectConductor }
@@ -189,19 +193,35 @@ class ModalLote extends Component {
 				
 				<div className="cInput-modal">
 					<label htmlFor="cantidadKg" > Cantidad </label>
-					<input className="input-modify" type="text" placeholder="cantidad en Kg:" id="cantidadKg" value={this.state.cantidadKg} name="cantidadKg" onChange={this.handleValChange}/>
+					<input className="input-modify" type="number" placeholder="cantidad en Kg:" id="cantidadKg" value={this.state.cantidadKg} name="cantidadKg" onChange={this.handleValChange}/>
 				</div>
 				<div className="cInput-modal">
 					<label htmlFor="factorRendimiento" > Factor de rendimiento </label>
-					<input className="input-modify" type="text" placeholder="Factor de Rendimiento:" id="factorRendimiento" value={this.state.factorRendimiento} name="factorRendimiento" onChange={this.handleValChange}/>
+					<input className="input-modify" type="number" placeholder="Factor de Rendimiento:" id="factorRendimiento" value={this.state.factorRendimiento} name="factorRendimiento" onChange={this.handleValChange}/>
 				</div>
 				<div className="cInput-modal">
 					<label htmlFor="humedad" > Humedad </label>
-					<input className="input-modify" type="text" placeholder="Humedad:" id="humedad" value={this.state.humedad} name="humedad" onChange={this.handleValChange}/>
+					<input className="input-modify" type="number" placeholder="Humedad:" id="humedad" value={this.state.humedad} name="humedad" onChange={this.handleValChange}/>
+				</div>
+				<div className="cInput-modal">
+					<label htmlFor="pruebaTaza" > Prueba Taza </label>
+					<input className="input-modify" type="number" placeholder="Prueba Taza:" id="pruebaTaza" value={this.state.pruebaTaza} name="pruebaTaza" onChange={this.handleValChange}/>
 				</div>
 				<div className="cInput-modal">
 					<label htmlFor="precioBase" > Precio Base </label>
-					<input className="input-modify" type="text" placeholder="Precio Base:" id="precioBase" value={this.state.precioBase} name="precioBase" onChange={this.handleValChange}/>
+					<input className="input-modify" type="number" placeholder="Precio Base:" id="precioBase" value={this.state.precioBase} name="precioBase" onChange={this.handleValChange}/>
+				</div>
+				<div className="cInput-modal">
+					<label htmlFor="retefuente" > Retefuente </label>
+					<input className="input-modify" type="number" placeholder="Retefuente:" id="retefuente" value={this.state.retefuente} name="retefuente" onChange={this.handleValChange}/>
+				</div>
+				<div className="cInput-modal">
+					<label htmlFor="retefuente" > Bonificacion </label>
+					<input className="input-modify" type="number" placeholder="Bonificacion:" id="bonificacion" value={this.state.bonificacion} name="bonificacion" onChange={this.handleValChange}/>
+				</div>
+				<div className="cInput-modal">
+					<label htmlFor="descuento" > Descuento </label>
+					<input className="input-modify" type="number" placeholder="Descuento:" id="descuento" value={this.state.descuento} name="descuento" onChange={this.handleValChange}/>
 				</div>
 				
 				<div className="cInput-modal">
