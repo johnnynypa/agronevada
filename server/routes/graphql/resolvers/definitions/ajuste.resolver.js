@@ -5,7 +5,7 @@ import Lote from '../../../../model/definitions/lote';
 
 export default {
     Query:{
-        ajuste(id){
+        ajuste(root, {id}){
             return (id) ? Ajuste.getById(id)
                 .then( dat => dat)
                 .catch( err => {throw new Error(err)})
@@ -16,7 +16,7 @@ export default {
             .then( dat => dat)
             .catch( err => {throw new Error(err)})
         },
-        ajustesByLote(idLote){
+        ajustesByLote(root, {idLote}){
             return (idLote) ? Ajuste.getById(idLote)
                 .then( dat => dat)
                 .catch( err => {throw new Error(err)})
@@ -24,12 +24,18 @@ export default {
         }
     },
     Mutation:{
-        createAjuste(ajuste){
+        createAjuste(root, {ajuste}){
+            console.log(ajuste);
             if(ajuste){
-                validarSaldoLote(ajuste.idLote, ajuste.cantidadKg)
-                .then( () =>{
-                    Ajuste.newAjuste(ajuste)
-                    .then(dat => true)
+                return validarSaldoLote(ajuste.idLote, ajuste.cantidadKg)
+                .then( (saldoFinal) =>{
+                    return Ajuste.newAjuste(ajuste)
+                    .then(dat => {
+                        //Actualizar saldo del lote
+                        return Lote.actualizarSaldo(saldoFinal, ajuste.idLote)
+                        .then(() => true)
+                        .catch( err => {throw new Error(err)})
+                    })
                     .catch( err => {throw new Error(err)})
                 })
             }else{
@@ -37,14 +43,18 @@ export default {
             }
         },
         
-        createAjusteReturned(ajuste){
+        createAjusteReturned(root, {ajuste}){
             if(ajuste){
-                validarSaldoLote(ajuste.idLote, ajuste.cantidadKg)
-                .then( () =>{
+                return validarSaldoLote(ajuste.idLote, ajuste.cantidadKg)
+                .then( (saldoFinal) =>{
                     Ajuste.newAjuste(ajuste)
                     .then(dat => {
-                        ajuste.id = dat;
-                        return ajuste;
+                        return Lote.actualizarSaldo(saldoFinal, ajuste.idLote)
+                        .then(() => {
+                            ajuste.id = dat;
+                            return ajuste;
+                        })
+                        .catch( err => {throw new Error(err)})
                     })
                     .catch( err => {throw new Error(err)})
                 })
@@ -58,11 +68,17 @@ export default {
 function validarSaldoLote(idLote, cantidad){
     return new Promise( (resolve, reject) => {
         try{
-            await Lote.getById(idLote).then( dat =>{
-                if(!dat || (dat.saldo - cantidad < 0) ){
-                    reject('El lote: '+idLote+' No posee la cantidad requerida');
+            Lote.getById(idLote)
+            .then( dat =>{
+                if(!dat && cantidad < 0){
+                    cantidad = cantidad*(-1);
+                    if(dat.saldo - cantidad < 0 ){
+                        reject('El lote: '+idLote+' No posee la cantidad requerida');
+                    }else{
+                        resolve(dat.saldo-cantidad);
+                    }
                 }else{
-                    resolve();
+                    resolve(dat.saldo + cantidad);
                 }
             })
         }catch(err){

@@ -44,19 +44,19 @@ class ModalCliente extends Component {
 					<span className="title-modal">Cliente</span>
 				</div>
 				<div className="cInput-modal">
-					<input className="input-modify" type="text" placeholder="Nombre:" id="idNombre" name="nombre" onChange={this.handleValChange}/>
+					<input className="input-modify" type="text" placeholder="Nombre:" id="idNombre" value={this.state.nombre} name="nombre" onChange={this.handleValChange}/>
 				</div>
 				<div className="cInput-modal">
-					<input className="input-modify" type="text" placeholder="Cedula:" id="idCedula" name="cedula" onChange={this.handleValChange}/>
+					<input className="input-modify" type="text" placeholder="Cedula:" id="idCedula" value={this.state.cedula} name="cedula" onChange={this.handleValChange}/>
 				</div>
 				<div className="cInput-modal">
-					<input className="input-modify" type="text" placeholder="Direccion:" id="idDireccion" name="direccion" onChange={this.handleValChange}/>
+					<input className="input-modify" type="text" placeholder="Direccion:" id="idDireccion" value={this.state.direccion} name="direccion" onChange={this.handleValChange}/>
 				</div>
 				<div className="cInput-modal">
-					<input className="input-modify" type="text" placeholder="Email:" id="idEmail" name="email" onChange={this.handleValChange}/>
+					<input className="input-modify" type="text" placeholder="Email:" id="idEmail" name="email" value={this.state.email} onChange={this.handleValChange}/>
 				</div>	
 				<div className="cInput-modal">
-					<input className="input-modify" type="text" placeholder="Telefono:" id="idTelefono" name="telefono" onChange={this.handleValChange}/>
+					<input className="input-modify" type="text" placeholder="Telefono:" id="idTelefono" value={this.state.telefono} name="telefono" onChange={this.handleValChange}/>
 				</div>	
 				<div className="cInput-modal">
 					<button className="modal-save" onClick={this.handleSaveClick}>Guardar</button>

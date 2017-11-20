@@ -5,6 +5,7 @@ import TipoSecado from './pages/tipoSecado';
 import Productor from './pages/productor';
 import Conductor from './pages/conductor';
 import Cliente from './pages/cliente';
+import Lote from './pages/lote';
 
 import '../../styles/working.css';
 
@@ -20,6 +21,8 @@ class Working extends React.Component{
             return(<div className="working" > <Conductor/></div>)
         }else if(this.props.isWorking == 'clientes'){
             return(<div className="working" > <Cliente/></div>)
+        }else if(this.props.isWorking == 'lotes'){
+            return(<div className="working" > <Lote/></div>)
         }else{
             return(<div className="working" ></div>)
         }

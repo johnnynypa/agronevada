@@ -18,5 +18,9 @@ export default [
 	{
 		title: 'Clientes',
 		url: 'clientes'
+	},
+	{
+		title: 'Lotes',
+		url: 'lotes'
 	}
 ];

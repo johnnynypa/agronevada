@@ -9,6 +9,7 @@ import conductorResolver from './definitions/conductor.resolver';
 import loteResolver from './definitions/lote.resolver';
 import clienteResolver from './definitions/cliente.resolver';
 import salidaResolver from './definitions/salida.resolver';
+import ajusteResolver from './definitions/ajuste.resolver';
 
 const resolvers = merge(
     productorResolver,
@@ -17,7 +18,8 @@ const resolvers = merge(
     conductorResolver,
     loteResolver,
     clienteResolver,
-    salidaResolver
+    salidaResolver,
+    ajusteResolver
 );
 
 export default resolvers;
