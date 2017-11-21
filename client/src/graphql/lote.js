@@ -61,12 +61,6 @@ export function lote(id){
                 descuento
                 retefuente
                 bonificacion
-                salidas{
-                  id
-                }
-                ajustes{
-                  id
-                }
               }
             }
         `,

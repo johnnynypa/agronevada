@@ -1,8 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
 import Modal from 'react-modal';
 import ModalData from './modalNew/ModalLote';
+import ModalLoteView from './modalView/ModalLote';
 import  {lotes, lote} from '../../../graphql/lote';
 
 class Lote extends React.Component{
@@ -13,18 +12,32 @@ class Lote extends React.Component{
 			Infos : [],
 			error : "",
 			typeEdit : {},
-			modalIsOpenEdit : false
+			typeView : {},
+			modalIsOpenEdit : false,
+			modalIsOpenView : false
 		}
 		this.openModal = this.openModal.bind(this);
+		this.openModalView = this.openModalView.bind(this);
 		this.closeModal = this.closeModal.bind(this);
 		this.updateTable = this.updateTable.bind(this);
+	}
+	
+	openModalView(e){
+		console.log(e.target.id);
+		lote(e.target.id)
+		.then(dat => {
+			this.setState({modalIsOpenView : true, typeView:dat})
+		})
+		.catch( err => {
+			console.log(err);
+			alert("Ha ocurrido un error, vuelva a intentarlo");
+		});
 	}
 	
 	openModal(e) {
 		if(e.target.id === "add"){ 
 			this.setState({modalIsOpen: true});
 		}else{
-			// console.log(e.target.id);
 			lote(e.target.id)
 			.then(dat => {
 				// console.log("Los datos devueltos son: " + JSON.stringify(dat))
@@ -35,7 +48,11 @@ class Lote extends React.Component{
 	}
 	
 	closeModal() {
-		this.setState({modalIsOpen: false, modalIsOpenEdit: false});
+		this.setState({
+			modalIsOpen: false,
+			modalIsOpenEdit: false,
+			modalIsOpenView: false
+		});
 	}
 
 	updateTable(dat){
@@ -76,7 +93,7 @@ class Lote extends React.Component{
 								<th>Secado</th>
 								<th>Saldo</th>
 								<th>Finca</th>
-								<th>Editar</th>
+								<th>Opciones</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -87,7 +104,10 @@ class Lote extends React.Component{
 									<td>{inf.secado.descripcion}</td>
 									<td>{inf.saldo}</td>
 									<td>{inf.productor.nombreFinca}</td>
-									<td><button id={inf.id} onClick={this.openModal} className="button-edit">Editar</button></td>
+									<td>
+										<button id={inf.id} onClick={this.openModal} className="button-edit">Editar</button>
+										<button id={inf.id} onClick={this.openModalView} className="button-edit">Ver</button>
+									</td>
 								</tr>
 							)}
 						</tbody>
@@ -99,6 +119,15 @@ class Lote extends React.Component{
 					<div className="center-modal">
 						<ModalData updateTable={this.updateTable}/>
 					</div>
+				</Modal>
+				<Modal
+					isOpen={this.state.modalIsOpenView}
+					onRequestClose={this.closeModal}
+					>
+					<ModalLoteView
+						closeModal={this.closeModal}
+						data={this.state.typeView}
+					/>
 				</Modal>
             </div>
         )
