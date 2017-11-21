@@ -27,7 +27,9 @@ export default `
         createLoteReturned (lote : newLote) : Lote
         createCliente ( cliente : newCliente ) : Boolean
         createClienteReturned (cliente : newCliente) : Cliente
+        
         createSalida ( salida : newSalida ) : Boolean
+        createSalidaReturned ( salida : newSalida ) : Salida
         createAjuste (ajuste: newAjuste) : Boolean
         createAjusteReturned (ajuste: newAjuste) : Ajuste
     }

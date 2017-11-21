@@ -22,5 +22,9 @@ export default [
 	{
 		title: 'Lotes',
 		url: 'lotes'
+	},
+	{
+		title: 'Salidas',
+		url: 'salidas'
 	}
 ];

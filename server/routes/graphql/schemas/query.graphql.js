@@ -25,6 +25,8 @@ export default `
         ajuste                          (id : Int)                                      : Ajuste
         ajustes                                                                         : [Ajuste]
         ajustesByLote                   (idLote : Int)                                  : [Ajuste]
+        salida                          (id: Int)                                       : Salida
+        salidas                                                                         : [Salida]
     }
 `;
 
@@ -33,8 +35,6 @@ export default `
 //         usuariosByRole                  (idRole : Int)                                  : [Usuario]
 // role                            (id : Int)                                      : Role
 //         roles                                                                           : [Role]
-//         salida                          (id: Int)                                       : Salida
-//         salidas                                                                         : [Salida]
 //         salidasByLote                   (idLote : Int)                                  : [Salida]
 //         salidasByFecha                  (fecha : String)                                : [Salida]
 //         salidasByLoteAndFecha           (idLote : Int, fecha : String)                  : [Salida]
